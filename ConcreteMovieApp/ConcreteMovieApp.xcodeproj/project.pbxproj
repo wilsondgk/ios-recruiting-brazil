@@ -13,6 +13,14 @@
 		064130F62423CA3B001E83C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 064130F52423CA3B001E83C5 /* Preview Assets.xcassets */; };
 		064130F92423CA3B001E83C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 064130F72423CA3B001E83C5 /* LaunchScreen.storyboard */; };
 		064131042423CA3B001E83C5 /* ConcreteMovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064131032423CA3B001E83C5 /* ConcreteMovieAppTests.swift */; };
+		0641311824240F2C001E83C5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641311724240F2C001E83C5 /* Coordinator.swift */; };
+		0641311A242527A2001E83C5 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06413119242527A2001E83C5 /* MainCoordinator.swift */; };
+		0641311E24252C0F001E83C5 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641311D24252C0F001E83C5 /* BaseTabBarViewController.swift */; };
+		0641312124252E8B001E83C5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641312024252E8B001E83C5 /* Colors.swift */; };
+		0641312424252EC2001E83C5 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641312324252EC2001E83C5 /* UIColor+extension.swift */; };
+		0641312724253BAF001E83C5 /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641312624253BAF001E83C5 /* MoviesListViewController.swift */; };
+		0641312924253E2B001E83C5 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641312824253E2B001E83C5 /* UIView+extension.swift */; };
+		064131652425A72C001E83C5 /* FavoriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064131642425A72C001E83C5 /* FavoriteMoviesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +44,14 @@
 		064130FF2423CA3B001E83C5 /* ConcreteMovieAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcreteMovieAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		064131032423CA3B001E83C5 /* ConcreteMovieAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteMovieAppTests.swift; sourceTree = "<group>"; };
 		064131052423CA3B001E83C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0641311724240F2C001E83C5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		06413119242527A2001E83C5 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		0641311D24252C0F001E83C5 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
+		0641312024252E8B001E83C5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0641312324252EC2001E83C5 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		0641312624253BAF001E83C5 /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
+		0641312824253E2B001E83C5 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		064131642425A72C001E83C5 /* FavoriteMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +75,7 @@
 		064130DD2423CA36001E83C5 = {
 			isa = PBXGroup;
 			children = (
+				0641311624240170001E83C5 /* Coordinator */,
 				064130E82423CA36001E83C5 /* ConcreteMovieApp */,
 				064131022423CA3B001E83C5 /* ConcreteMovieAppTests */,
 				064130E72423CA36001E83C5 /* Products */,
@@ -77,6 +94,9 @@
 		064130E82423CA36001E83C5 /* ConcreteMovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				0641312224252EB0001E83C5 /* Extensions */,
+				0641311F24252E64001E83C5 /* BaseResources */,
+				0641311B24252BDD001E83C5 /* Scenes */,
 				064130E92423CA36001E83C5 /* AppDelegate.swift */,
 				064130F22423CA3B001E83C5 /* Assets.xcassets */,
 				064130F72423CA3B001E83C5 /* LaunchScreen.storyboard */,
@@ -102,6 +122,66 @@
 				064131052423CA3B001E83C5 /* Info.plist */,
 			);
 			path = ConcreteMovieAppTests;
+			sourceTree = "<group>";
+		};
+		0641311624240170001E83C5 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0641311724240F2C001E83C5 /* Coordinator.swift */,
+				06413119242527A2001E83C5 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		0641311B24252BDD001E83C5 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				0641311C24252BE4001E83C5 /* TabBar */,
+				0641312524253B95001E83C5 /* MoviesList */,
+				064131632425A478001E83C5 /* FavoriteMovies */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		0641311C24252BE4001E83C5 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				0641311D24252C0F001E83C5 /* BaseTabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		0641311F24252E64001E83C5 /* BaseResources */ = {
+			isa = PBXGroup;
+			children = (
+				0641312024252E8B001E83C5 /* Colors.swift */,
+			);
+			path = BaseResources;
+			sourceTree = "<group>";
+		};
+		0641312224252EB0001E83C5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0641312324252EC2001E83C5 /* UIColor+extension.swift */,
+				0641312824253E2B001E83C5 /* UIView+extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0641312524253B95001E83C5 /* MoviesList */ = {
+			isa = PBXGroup;
+			children = (
+				0641312624253BAF001E83C5 /* MoviesListViewController.swift */,
+			);
+			path = MoviesList;
+			sourceTree = "<group>";
+		};
+		064131632425A478001E83C5 /* FavoriteMovies */ = {
+			isa = PBXGroup;
+			children = (
+				064131642425A72C001E83C5 /* FavoriteMoviesViewController.swift */,
+			);
+			path = FavoriteMovies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,7 +286,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				064130EA2423CA36001E83C5 /* AppDelegate.swift in Sources */,
+				0641312124252E8B001E83C5 /* Colors.swift in Sources */,
+				0641311A242527A2001E83C5 /* MainCoordinator.swift in Sources */,
+				0641312924253E2B001E83C5 /* UIView+extension.swift in Sources */,
+				0641312424252EC2001E83C5 /* UIColor+extension.swift in Sources */,
 				064130EF2423CA36001E83C5 /* ConcreteMovieApp.xcdatamodeld in Sources */,
+				0641311E24252C0F001E83C5 /* BaseTabBarViewController.swift in Sources */,
+				064131652425A72C001E83C5 /* FavoriteMoviesViewController.swift in Sources */,
+				0641311824240F2C001E83C5 /* Coordinator.swift in Sources */,
+				0641312724253BAF001E83C5 /* MoviesListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -344,7 +432,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -363,7 +451,7 @@
 				DEVELOPMENT_TEAM = U6YC97J2ZT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ConcreteMovieApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -384,7 +472,7 @@
 				DEVELOPMENT_TEAM = U6YC97J2ZT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ConcreteMovieApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
