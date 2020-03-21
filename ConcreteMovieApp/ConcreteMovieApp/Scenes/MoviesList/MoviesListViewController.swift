@@ -8,7 +8,22 @@
 
 import UIKit
 
+protocol MoviesListNavigationProtocol: class {
+    func showMovieDetailVC()
+}
+
 class MoviesListViewController: UIViewController {
+    
+    private var coordinator: MoviesListNavigationProtocol?
+    
+    init(withCoordinator coordinator: MoviesListNavigationProtocol) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,11 +32,12 @@ class MoviesListViewController: UIViewController {
     override func loadView() {
         super.loadView()
         title = "Movies"
-        tabBarItem = UITabBarItem(title: "Movies", image: UIImage(named:"movie_list_icon") , tag: 0)
+        
         setupLayout()
     }
     
     private func setupLayout() {
+        
         let littleView = UIView()
         littleView.backgroundColor = Colors.marineBlue
         view.addSubview(littleView, constraints: [
@@ -30,5 +46,13 @@ class MoviesListViewController: UIViewController {
             littleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             littleView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
+        littleView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tap() {
+//        navigationController?.pushViewController(FavoriteMoviesViewController(), animated: true)
+        coordinator?.showMovieDetailVC()
     }
 }

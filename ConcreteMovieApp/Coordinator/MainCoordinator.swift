@@ -12,6 +12,7 @@ import UIKit
 final class MainCoordinator: Coordinator {
     
     private let navigationController: UINavigationController
+    private var childCoordinators: [Coordinator] = []
     
     init(withNavigationController navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -23,15 +24,19 @@ final class MainCoordinator: Coordinator {
         navigationController.pushViewController(tabBarVC, animated: false)
     }
     
-    private func createMovieListViewController() -> UIViewController {
-        let movieListVC = MoviesListViewController()
-        movieListVC.tabBarItem = UITabBarItem(title: "Movies", image: UIImage(named:"movie_list_icon") , tag: 0)
-        return movieListVC
+    private func createMovieListViewController() -> UINavigationController {
+        let navVC = BaseNavigationController()
+        let moviesListCoordinator = MoviesListCoordinator(withNavigationController: navVC)
+        moviesListCoordinator.start()
+        childCoordinators.append(moviesListCoordinator)
+        return navVC
     }
     
-    private func createFavoriteMoviesViewController() -> UIViewController {
-        let favoriteMoviesVC = FavoriteMoviesViewController()
-        favoriteMoviesVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorite_icon") , tag: 1)
-        return favoriteMoviesVC
+    private func createFavoriteMoviesViewController() -> UINavigationController {
+        let navVC = BaseNavigationController()
+        let favoriteCoordinator = FavoriteMoviesCoordinator(withNavigationController: navVC)
+        favoriteCoordinator.start()
+        childCoordinators.append(favoriteCoordinator)
+        return navVC
     }
 }

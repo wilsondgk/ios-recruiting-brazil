@@ -10,12 +10,9 @@ import UIKit
 
 class BaseTabBarViewController: UITabBarController {
     
-    init(withViewControllers viewControllers: [UIViewController]) {
+    init(withViewControllers viewControllers: [UINavigationController]) {
         super.init(nibName: nil, bundle: nil)
-        self.viewControllers = viewControllers.map({ (viewController) -> UIViewController in
-            let navController = UINavigationController(rootViewController: viewController)
-            return navController
-        })
+        self.viewControllers = viewControllers
     }
     
     required init?(coder: NSCoder) {
