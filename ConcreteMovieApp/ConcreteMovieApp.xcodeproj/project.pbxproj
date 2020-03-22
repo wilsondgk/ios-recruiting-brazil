@@ -27,6 +27,9 @@
 		064131742426D389001E83C5 /* MoviesListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064131732426D389001E83C5 /* MoviesListInteractor.swift */; };
 		064131762426D432001E83C5 /* MoviesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064131752426D432001E83C5 /* MoviesListPresenter.swift */; };
 		06558A982426EFC700662113 /* MoviesListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558A972426EFC700662113 /* MoviesListWorker.swift */; };
+		06558A9B2426F92A00662113 /* HttpConnectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558A9A2426F92A00662113 /* HttpConnectionProtocol.swift */; };
+		06558A9D2426FB0100662113 /* HttpRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558A9C2426FB0100662113 /* HttpRequestBuilder.swift */; };
+		06558A9F2426FDC000662113 /* MoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558A9E2426FDC000662113 /* MoyaProvider.swift */; };
 		0E1B2B8B421858AF1576EAFE /* Pods_ConcreteMovieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34D96F36D6774393CD6FC37 /* Pods_ConcreteMovieAppTests.framework */; };
 		42A5EB41205A02E0147478A2 /* Pods_ConcreteMovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AA68F7C88F50822651AD3F /* Pods_ConcreteMovieApp.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +69,9 @@
 		064131732426D389001E83C5 /* MoviesListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListInteractor.swift; sourceTree = "<group>"; };
 		064131752426D432001E83C5 /* MoviesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListPresenter.swift; sourceTree = "<group>"; };
 		06558A972426EFC700662113 /* MoviesListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListWorker.swift; sourceTree = "<group>"; };
+		06558A9A2426F92A00662113 /* HttpConnectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpConnectionProtocol.swift; sourceTree = "<group>"; };
+		06558A9C2426FB0100662113 /* HttpRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestBuilder.swift; sourceTree = "<group>"; };
+		06558A9E2426FDC000662113 /* MoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProvider.swift; sourceTree = "<group>"; };
 		50CC70E107296A6517FEBEA4 /* Pods-ConcreteMovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteMovieApp.release.xcconfig"; path = "Target Support Files/Pods-ConcreteMovieApp/Pods-ConcreteMovieApp.release.xcconfig"; sourceTree = "<group>"; };
 		5355592197C11B8495AF1B4E /* Pods-ConcreteMovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteMovieAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ConcreteMovieAppTests/Pods-ConcreteMovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		84AA68F7C88F50822651AD3F /* Pods_ConcreteMovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConcreteMovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +123,7 @@
 		064130E82423CA36001E83C5 /* ConcreteMovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				06558A992426F90100662113 /* Connection */,
 				0641312224252EB0001E83C5 /* Extensions */,
 				0641311F24252E64001E83C5 /* BaseResources */,
 				0641311624240170001E83C5 /* Coordinator */,
@@ -212,6 +219,16 @@
 				064131642425A72C001E83C5 /* FavoriteMoviesViewController.swift */,
 			);
 			path = FavoriteMovies;
+			sourceTree = "<group>";
+		};
+		06558A992426F90100662113 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				06558A9A2426F92A00662113 /* HttpConnectionProtocol.swift */,
+				06558A9C2426FB0100662113 /* HttpRequestBuilder.swift */,
+				06558A9E2426FDC000662113 /* MoyaProvider.swift */,
+			);
+			path = Connection;
 			sourceTree = "<group>";
 		};
 		9EB1DE2F32A6ED47CF7C6A9B /* Pods */ = {
@@ -414,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0641316B2425C34E001E83C5 /* BaseNavigationController.swift in Sources */,
+				06558A9F2426FDC000662113 /* MoyaProvider.swift in Sources */,
 				064130EA2423CA36001E83C5 /* AppDelegate.swift in Sources */,
 				064131762426D432001E83C5 /* MoviesListPresenter.swift in Sources */,
 				0641312124252E8B001E83C5 /* Colors.swift in Sources */,
@@ -426,7 +444,9 @@
 				06558A982426EFC700662113 /* MoviesListWorker.swift in Sources */,
 				0641311E24252C0F001E83C5 /* BaseTabBarViewController.swift in Sources */,
 				064131652425A72C001E83C5 /* FavoriteMoviesViewController.swift in Sources */,
+				06558A9D2426FB0100662113 /* HttpRequestBuilder.swift in Sources */,
 				064131692425C0D3001E83C5 /* FavoriteMoviesCoordinator.swift in Sources */,
+				06558A9B2426F92A00662113 /* HttpConnectionProtocol.swift in Sources */,
 				0641311824240F2C001E83C5 /* Coordinator.swift in Sources */,
 				0641312724253BAF001E83C5 /* MoviesListViewController.swift in Sources */,
 			);

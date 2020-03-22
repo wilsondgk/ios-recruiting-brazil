@@ -19,7 +19,7 @@ final class MoviesListCoordinator: Coordinator, MoviesListNavigationProtocol {
     
     func start() {
         let presenter = MoviesListPresenter()
-        let worker = MoviesListWorker()
+        let worker = MoviesListWorker(withProvider: MoyaApiProvider())
         let interactor = MoviesListInteractor(withPresenter: presenter,
                                               andWorker: worker)
         let movieListVC = MoviesListViewController(withInteractor: interactor)
