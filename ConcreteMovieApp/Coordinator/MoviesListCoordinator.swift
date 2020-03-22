@@ -18,7 +18,12 @@ final class MoviesListCoordinator: Coordinator, MoviesListNavigationProtocol {
     }
     
     func start() {
-        let movieListVC = MoviesListViewController(withCoordinator: self)
+        let presenter = MoviesListPresenter()
+        let worker = MoviesListWorker()
+        let interactor = MoviesListInteractor(withPresenter: presenter,
+                                              andWorker: worker)
+        let movieListVC = MoviesListViewController(withInteractor: interactor)
+        presenter.setView(movieListVC)
         movieListVC.tabBarItem = UITabBarItem(title: "Movies", image: UIImage(named:"movie_list_icon") , tag: 0)
         navigationController.setViewControllers([movieListVC], animated: true)
     }

@@ -12,12 +12,16 @@ protocol MoviesListNavigationProtocol: class {
     func showMovieDetailVC()
 }
 
-class MoviesListViewController: UIViewController {
+protocol MoviesListInteractorProtocol: class {
     
-    private var coordinator: MoviesListNavigationProtocol?
+}
+
+class MoviesListViewController: UIViewController, MoviesListViewProtocol {
     
-    init(withCoordinator coordinator: MoviesListNavigationProtocol) {
-        self.coordinator = coordinator
+    private let interactor: MoviesListInteractorProtocol
+    
+    init(withInteractor interactor: MoviesListInteractorProtocol) {
+        self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -46,13 +50,5 @@ class MoviesListViewController: UIViewController {
             littleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             littleView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
-        littleView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func tap() {
-//        navigationController?.pushViewController(FavoriteMoviesViewController(), animated: true)
-        coordinator?.showMovieDetailVC()
     }
 }

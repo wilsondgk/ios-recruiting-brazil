@@ -24,6 +24,9 @@
 		064131672425BA5E001E83C5 /* MoviesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064131662425BA5E001E83C5 /* MoviesListCoordinator.swift */; };
 		064131692425C0D3001E83C5 /* FavoriteMoviesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064131682425C0D3001E83C5 /* FavoriteMoviesCoordinator.swift */; };
 		0641316B2425C34E001E83C5 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641316A2425C34E001E83C5 /* BaseNavigationController.swift */; };
+		064131742426D389001E83C5 /* MoviesListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064131732426D389001E83C5 /* MoviesListInteractor.swift */; };
+		064131762426D432001E83C5 /* MoviesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064131752426D432001E83C5 /* MoviesListPresenter.swift */; };
+		06558A982426EFC700662113 /* MoviesListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558A972426EFC700662113 /* MoviesListWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		064131662425BA5E001E83C5 /* MoviesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListCoordinator.swift; sourceTree = "<group>"; };
 		064131682425C0D3001E83C5 /* FavoriteMoviesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesCoordinator.swift; sourceTree = "<group>"; };
 		0641316A2425C34E001E83C5 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		064131732426D389001E83C5 /* MoviesListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListInteractor.swift; sourceTree = "<group>"; };
+		064131752426D432001E83C5 /* MoviesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListPresenter.swift; sourceTree = "<group>"; };
+		06558A972426EFC700662113 /* MoviesListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +187,9 @@
 			isa = PBXGroup;
 			children = (
 				0641312624253BAF001E83C5 /* MoviesListViewController.swift */,
+				064131732426D389001E83C5 /* MoviesListInteractor.swift */,
+				064131752426D432001E83C5 /* MoviesListPresenter.swift */,
+				06558A972426EFC700662113 /* MoviesListWorker.swift */,
 			);
 			path = MoviesList;
 			sourceTree = "<group>";
@@ -296,12 +305,15 @@
 			files = (
 				0641316B2425C34E001E83C5 /* BaseNavigationController.swift in Sources */,
 				064130EA2423CA36001E83C5 /* AppDelegate.swift in Sources */,
+				064131762426D432001E83C5 /* MoviesListPresenter.swift in Sources */,
 				0641312124252E8B001E83C5 /* Colors.swift in Sources */,
+				064131742426D389001E83C5 /* MoviesListInteractor.swift in Sources */,
 				0641311A242527A2001E83C5 /* MainCoordinator.swift in Sources */,
 				064131672425BA5E001E83C5 /* MoviesListCoordinator.swift in Sources */,
 				0641312924253E2B001E83C5 /* UIView+extension.swift in Sources */,
 				0641312424252EC2001E83C5 /* UIColor+extension.swift in Sources */,
 				064130EF2423CA36001E83C5 /* ConcreteMovieApp.xcdatamodeld in Sources */,
+				06558A982426EFC700662113 /* MoviesListWorker.swift in Sources */,
 				0641311E24252C0F001E83C5 /* BaseTabBarViewController.swift in Sources */,
 				064131652425A72C001E83C5 /* FavoriteMoviesViewController.swift in Sources */,
 				064131692425C0D3001E83C5 /* FavoriteMoviesCoordinator.swift in Sources */,

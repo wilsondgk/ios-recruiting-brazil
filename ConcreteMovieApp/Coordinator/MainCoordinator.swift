@@ -27,16 +27,18 @@ final class MainCoordinator: Coordinator {
     private func createMovieListViewController() -> UINavigationController {
         let navVC = BaseNavigationController()
         let moviesListCoordinator = MoviesListCoordinator(withNavigationController: navVC)
-        moviesListCoordinator.start()
         childCoordinators.append(moviesListCoordinator)
+        moviesListCoordinator.start()
+        
         return navVC
     }
     
     private func createFavoriteMoviesViewController() -> UINavigationController {
         let navVC = BaseNavigationController()
         let favoriteCoordinator = FavoriteMoviesCoordinator(withNavigationController: navVC)
-        favoriteCoordinator.start()
         childCoordinators.append(favoriteCoordinator)
+        favoriteCoordinator.start()
+        
         return navVC
     }
 }
