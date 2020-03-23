@@ -44,8 +44,8 @@ extension Connection: TargetType {
     
     var baseURL: URL {
         switch self {
-        case .moyaRequest:
-            return URL(string: "https://api.themoviedb.org/3")!
+        case let .moyaRequest(request):
+            return URL(string: request.url)!
         }
     }
     

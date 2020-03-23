@@ -13,10 +13,10 @@ protocol MoviesListNavigationProtocol: class {
 }
 
 protocol MoviesListInteractorProtocol: class {
-    
+    func viewDidLoad()
 }
 
-class MoviesListViewController: UIViewController, MoviesListViewProtocol {
+class MoviesListViewController: BaseViewController, MoviesListViewProtocol {
     
     private let interactor: MoviesListInteractorProtocol
     
@@ -31,6 +31,8 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        interactor.viewDidLoad()
     }
     
     override func loadView() {
@@ -39,16 +41,46 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol {
         
         setupLayout()
     }
-    
+    let littleView = UIView()
     private func setupLayout() {
         
-        let littleView = UIView()
+        
         littleView.backgroundColor = Colors.marineBlue
+//        littleView.setState(.empty(emptyMessage: "error error error error error error error error error error ", image: UIImage(named: "search_icon")))
+//        littleView.setState(.loading(loadingMessage: "wilson\nwilson\nwilson\nwilson\n"))
         view.addSubview(littleView, constraints: [
             littleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             littleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             littleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            littleView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+            littleView.heightAnchor.constraint(equalToConstant: 100)
+//            littleView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
+        littleView.addGestureRecognizer(tapGesture)
+    }
+    
+    
+    var iterator = 0
+    @objc func tap() {
+        switch iterator % 4 {
+        case 0:
+            showLoadingInView(withMessage: "Wilson Kim Wilson Kim Wilson Kim \nWilson Kim Wilson Kim ")
+        case 1:
+            showError(nil, title: "Título")
+        case 2:
+            setNormalLayout()
+        case 3:
+            setNormalLayout()
+        default:
+            showLoading()
+        }
+        iterator += 1
+        view.bringSubviewToFront(littleView)
+    }
+    
+    //MARK: MoviesListViewProtocol
+    func showLoading() {
+        
     }
 }

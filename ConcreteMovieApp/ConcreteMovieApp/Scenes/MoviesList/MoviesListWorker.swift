@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MoviesListWorker: MoviesListWorkerProtocol {
+final class MoviesListWorker: MoviesListWorkerProtocol {
     
     private let provider: ApiProviderProtocol
     
@@ -16,13 +16,19 @@ class MoviesListWorker: MoviesListWorkerProtocol {
         self.provider = provider
     }
     
-    func getMoviesList(completion: @escaping (_ successModel: EmptyStruct) -> Void, facil: @escaping (_ errorModel: EmptyStruct) -> Void) {
-        let request = RequestBuilder(withUrl: "", andMethod: .get).create()
-        provider.makeRequest(withRequestParams: request) { (response: (Response<EmptyStruct, EmptyStruct>)) in
+    func getMoviesList(successCompletion: @escaping (_ movies: GeneralMovieResponseModel) -> Void, failCompletion: @escaping (_ error: Error) -> Void) {
+        let params = ["api_key" : "de94a58f8f1c55104fa3b01661f5c0d5"]
+        let request = RequestBuilder(withUrl: "https://api.themoviedb.org/3", andMethod: .get)
+            .withPath("/movie/popular")
+            .withQuery(params)
+            .create()
+        provider.makeRequest(withRequestParams: request) { (response: (Response<GeneralMovieResponseModel, EmptyStruct>)) in
             switch response {
-            case .success(let model):
+            case .success(let movies):
+                successCompletion(movies)
                 break
-            case .failure(let errorModel, let error):
+            case .failure(_, let error):
+                failCompletion(error)
                 break
             }
         }

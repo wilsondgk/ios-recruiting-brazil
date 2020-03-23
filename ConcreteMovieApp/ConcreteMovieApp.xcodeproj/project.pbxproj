@@ -30,6 +30,18 @@
 		06558A9B2426F92A00662113 /* HttpConnectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558A9A2426F92A00662113 /* HttpConnectionProtocol.swift */; };
 		06558A9D2426FB0100662113 /* HttpRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558A9C2426FB0100662113 /* HttpRequestBuilder.swift */; };
 		06558A9F2426FDC000662113 /* MoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558A9E2426FDC000662113 /* MoyaProvider.swift */; };
+		06558AA12428151900662113 /* MoviesListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AA02428151900662113 /* MoviesListModels.swift */; };
+		06558AA32428153E00662113 /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AA22428153E00662113 /* Date+extension.swift */; };
+		06558AAD24281E0700662113 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AA424281E0600662113 /* LoadingView.swift */; };
+		06558AAE24281E0700662113 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AA524281E0600662113 /* EmptyView.swift */; };
+		06558AAF24281E0700662113 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06558AA624281E0600662113 /* ErrorView.xib */; };
+		06558AB024281E0700662113 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06558AA724281E0600662113 /* LoadingView.xib */; };
+		06558AB124281E0700662113 /* StateFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AA824281E0600662113 /* StateFullView.swift */; };
+		06558AB224281E0700662113 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AA924281E0600662113 /* BaseViewController.swift */; };
+		06558AB324281E0700662113 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06558AAA24281E0600662113 /* EmptyView.xib */; };
+		06558AB424281E0700662113 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AAB24281E0700662113 /* ErrorView.swift */; };
+		06558AB524281E0700662113 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AAC24281E0700662113 /* ShadowView.swift */; };
+		06558AB72428214700662113 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AB62428214700662113 /* AppButton.swift */; };
 		0E1B2B8B421858AF1576EAFE /* Pods_ConcreteMovieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34D96F36D6774393CD6FC37 /* Pods_ConcreteMovieAppTests.framework */; };
 		42A5EB41205A02E0147478A2 /* Pods_ConcreteMovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AA68F7C88F50822651AD3F /* Pods_ConcreteMovieApp.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +84,18 @@
 		06558A9A2426F92A00662113 /* HttpConnectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpConnectionProtocol.swift; sourceTree = "<group>"; };
 		06558A9C2426FB0100662113 /* HttpRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestBuilder.swift; sourceTree = "<group>"; };
 		06558A9E2426FDC000662113 /* MoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProvider.swift; sourceTree = "<group>"; };
+		06558AA02428151900662113 /* MoviesListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListModels.swift; sourceTree = "<group>"; };
+		06558AA22428153E00662113 /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
+		06558AA424281E0600662113 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		06558AA524281E0600662113 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		06558AA624281E0600662113 /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		06558AA724281E0600662113 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		06558AA824281E0600662113 /* StateFullView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateFullView.swift; sourceTree = "<group>"; };
+		06558AA924281E0600662113 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		06558AAA24281E0600662113 /* EmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
+		06558AAB24281E0700662113 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		06558AAC24281E0700662113 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		06558AB62428214700662113 /* AppButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
 		50CC70E107296A6517FEBEA4 /* Pods-ConcreteMovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteMovieApp.release.xcconfig"; path = "Target Support Files/Pods-ConcreteMovieApp/Pods-ConcreteMovieApp.release.xcconfig"; sourceTree = "<group>"; };
 		5355592197C11B8495AF1B4E /* Pods-ConcreteMovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteMovieAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ConcreteMovieAppTests/Pods-ConcreteMovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		84AA68F7C88F50822651AD3F /* Pods_ConcreteMovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConcreteMovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,8 +211,18 @@
 		0641311F24252E64001E83C5 /* BaseResources */ = {
 			isa = PBXGroup;
 			children = (
+				06558AB62428214700662113 /* AppButton.swift */,
 				0641312024252E8B001E83C5 /* Colors.swift */,
 				0641316A2425C34E001E83C5 /* BaseNavigationController.swift */,
+				06558AA924281E0600662113 /* BaseViewController.swift */,
+				06558AA824281E0600662113 /* StateFullView.swift */,
+				06558AA524281E0600662113 /* EmptyView.swift */,
+				06558AAA24281E0600662113 /* EmptyView.xib */,
+				06558AAB24281E0700662113 /* ErrorView.swift */,
+				06558AA624281E0600662113 /* ErrorView.xib */,
+				06558AA424281E0600662113 /* LoadingView.swift */,
+				06558AA724281E0600662113 /* LoadingView.xib */,
+				06558AAC24281E0700662113 /* ShadowView.swift */,
 			);
 			path = BaseResources;
 			sourceTree = "<group>";
@@ -198,6 +232,7 @@
 			children = (
 				0641312324252EC2001E83C5 /* UIColor+extension.swift */,
 				0641312824253E2B001E83C5 /* UIView+extension.swift */,
+				06558AA22428153E00662113 /* Date+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -209,6 +244,7 @@
 				064131732426D389001E83C5 /* MoviesListInteractor.swift */,
 				064131752426D432001E83C5 /* MoviesListPresenter.swift */,
 				06558A972426EFC700662113 /* MoviesListWorker.swift */,
+				06558AA02428151900662113 /* MoviesListModels.swift */,
 			);
 			path = MoviesList;
 			sourceTree = "<group>";
@@ -338,6 +374,9 @@
 				064130F92423CA3B001E83C5 /* LaunchScreen.storyboard in Resources */,
 				064130F62423CA3B001E83C5 /* Preview Assets.xcassets in Resources */,
 				064130F32423CA3B001E83C5 /* Assets.xcassets in Resources */,
+				06558AAF24281E0700662113 /* ErrorView.xib in Resources */,
+				06558AB324281E0700662113 /* EmptyView.xib in Resources */,
+				06558AB024281E0700662113 /* LoadingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,21 +469,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06558AA12428151900662113 /* MoviesListModels.swift in Sources */,
 				0641316B2425C34E001E83C5 /* BaseNavigationController.swift in Sources */,
 				06558A9F2426FDC000662113 /* MoyaProvider.swift in Sources */,
+				06558AAD24281E0700662113 /* LoadingView.swift in Sources */,
+				06558AAE24281E0700662113 /* EmptyView.swift in Sources */,
+				06558AB124281E0700662113 /* StateFullView.swift in Sources */,
 				064130EA2423CA36001E83C5 /* AppDelegate.swift in Sources */,
 				064131762426D432001E83C5 /* MoviesListPresenter.swift in Sources */,
 				0641312124252E8B001E83C5 /* Colors.swift in Sources */,
+				06558AB524281E0700662113 /* ShadowView.swift in Sources */,
 				064131742426D389001E83C5 /* MoviesListInteractor.swift in Sources */,
 				0641311A242527A2001E83C5 /* MainCoordinator.swift in Sources */,
+				06558AB424281E0700662113 /* ErrorView.swift in Sources */,
 				064131672425BA5E001E83C5 /* MoviesListCoordinator.swift in Sources */,
 				0641312924253E2B001E83C5 /* UIView+extension.swift in Sources */,
 				0641312424252EC2001E83C5 /* UIColor+extension.swift in Sources */,
 				064130EF2423CA36001E83C5 /* ConcreteMovieApp.xcdatamodeld in Sources */,
 				06558A982426EFC700662113 /* MoviesListWorker.swift in Sources */,
+				06558AA32428153E00662113 /* Date+extension.swift in Sources */,
+				06558AB72428214700662113 /* AppButton.swift in Sources */,
 				0641311E24252C0F001E83C5 /* BaseTabBarViewController.swift in Sources */,
 				064131652425A72C001E83C5 /* FavoriteMoviesViewController.swift in Sources */,
 				06558A9D2426FB0100662113 /* HttpRequestBuilder.swift in Sources */,
+				06558AB224281E0700662113 /* BaseViewController.swift in Sources */,
 				064131692425C0D3001E83C5 /* FavoriteMoviesCoordinator.swift in Sources */,
 				06558A9B2426F92A00662113 /* HttpConnectionProtocol.swift in Sources */,
 				0641311824240F2C001E83C5 /* Coordinator.swift in Sources */,

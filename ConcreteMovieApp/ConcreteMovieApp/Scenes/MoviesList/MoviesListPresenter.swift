@@ -9,7 +9,7 @@
 import Foundation
 
 protocol MoviesListViewProtocol: class {
-    
+    func showLoading()
 }
 
 class MoviesListPresenter: MoviesListPresenterProtocol {
@@ -18,5 +18,9 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
     
     func setView(_ view: MoviesListViewProtocol) {
         self.view = view
+    }
+    
+    func presentLoadingState() {
+        view?.showLoading()
     }
 }
