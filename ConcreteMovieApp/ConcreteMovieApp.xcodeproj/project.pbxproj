@@ -42,6 +42,8 @@
 		06558AB424281E0700662113 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AAB24281E0700662113 /* ErrorView.swift */; };
 		06558AB524281E0700662113 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AAC24281E0700662113 /* ShadowView.swift */; };
 		06558AB72428214700662113 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AB62428214700662113 /* AppButton.swift */; };
+		06558AC0242BE7C200662113 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06558ABF242BE7C200662113 /* Localizable.strings */; };
+		06558AC2242BEA9F00662113 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06558AC1242BEA9F00662113 /* String+extension.swift */; };
 		0E1B2B8B421858AF1576EAFE /* Pods_ConcreteMovieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34D96F36D6774393CD6FC37 /* Pods_ConcreteMovieAppTests.framework */; };
 		42A5EB41205A02E0147478A2 /* Pods_ConcreteMovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AA68F7C88F50822651AD3F /* Pods_ConcreteMovieApp.framework */; };
 /* End PBXBuildFile section */
@@ -96,6 +98,8 @@
 		06558AAB24281E0700662113 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		06558AAC24281E0700662113 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		06558AB62428214700662113 /* AppButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
+		06558ABF242BE7C200662113 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		06558AC1242BEA9F00662113 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		50CC70E107296A6517FEBEA4 /* Pods-ConcreteMovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteMovieApp.release.xcconfig"; path = "Target Support Files/Pods-ConcreteMovieApp/Pods-ConcreteMovieApp.release.xcconfig"; sourceTree = "<group>"; };
 		5355592197C11B8495AF1B4E /* Pods-ConcreteMovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteMovieAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ConcreteMovieAppTests/Pods-ConcreteMovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		84AA68F7C88F50822651AD3F /* Pods_ConcreteMovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConcreteMovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +151,7 @@
 		064130E82423CA36001E83C5 /* ConcreteMovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				06558ABE242BE7A300662113 /* Localizable */,
 				06558A992426F90100662113 /* Connection */,
 				0641312224252EB0001E83C5 /* Extensions */,
 				0641311F24252E64001E83C5 /* BaseResources */,
@@ -233,6 +238,7 @@
 				0641312324252EC2001E83C5 /* UIColor+extension.swift */,
 				0641312824253E2B001E83C5 /* UIView+extension.swift */,
 				06558AA22428153E00662113 /* Date+extension.swift */,
+				06558AC1242BEA9F00662113 /* String+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -265,6 +271,14 @@
 				06558A9E2426FDC000662113 /* MoyaProvider.swift */,
 			);
 			path = Connection;
+			sourceTree = "<group>";
+		};
+		06558ABE242BE7A300662113 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				06558ABF242BE7C200662113 /* Localizable.strings */,
+			);
+			path = Localizable;
 			sourceTree = "<group>";
 		};
 		9EB1DE2F32A6ED47CF7C6A9B /* Pods */ = {
@@ -374,6 +388,7 @@
 				064130F92423CA3B001E83C5 /* LaunchScreen.storyboard in Resources */,
 				064130F62423CA3B001E83C5 /* Preview Assets.xcassets in Resources */,
 				064130F32423CA3B001E83C5 /* Assets.xcassets in Resources */,
+				06558AC0242BE7C200662113 /* Localizable.strings in Resources */,
 				06558AAF24281E0700662113 /* ErrorView.xib in Resources */,
 				06558AB324281E0700662113 /* EmptyView.xib in Resources */,
 				06558AB024281E0700662113 /* LoadingView.xib in Resources */,
@@ -479,6 +494,7 @@
 				064131762426D432001E83C5 /* MoviesListPresenter.swift in Sources */,
 				0641312124252E8B001E83C5 /* Colors.swift in Sources */,
 				06558AB524281E0700662113 /* ShadowView.swift in Sources */,
+				06558AC2242BEA9F00662113 /* String+extension.swift in Sources */,
 				064131742426D389001E83C5 /* MoviesListInteractor.swift in Sources */,
 				0641311A242527A2001E83C5 /* MainCoordinator.swift in Sources */,
 				06558AB424281E0700662113 /* ErrorView.swift in Sources */,

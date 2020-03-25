@@ -31,7 +31,7 @@ class FavoriteMoviesViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        title = "Favorites"
+        title = String(key: "favorites_title")
         
         setupLayout()
     }

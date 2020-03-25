@@ -37,7 +37,7 @@ class MoviesListViewController: BaseViewController, MoviesListViewProtocol {
     
     override func loadView() {
         super.loadView()
-        title = "Movies"
+        title = String(key: "movies_title")
         
         setupLayout()
     }
