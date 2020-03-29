@@ -285,10 +285,10 @@
 		064131632425A478001E83C5 /* FavoriteMovies */ = {
 			isa = PBXGroup;
 			children = (
-				064131642425A72C001E83C5 /* FavoriteMoviesViewController.swift */,
-				06B9A9F024313419008773AD /* FavoriteMoviesInteractor.swift */,
-				06B9A9F224313442008773AD /* FavoriteMoviesPresenter.swift */,
-				06B9A9F424313455008773AD /* FavoriteMoviesWorker.swift */,
+				06B9AA0024314D95008773AD /* ViewController */,
+				06B9AA0124314DA0008773AD /* Interactor */,
+				06B9AA0224314DB0008773AD /* Presenter */,
+				06B9AA0324314DB9008773AD /* Worker */,
 			);
 			path = FavoriteMovies;
 			sourceTree = "<group>";
@@ -412,6 +412,38 @@
 				06558AA02428151900662113 /* MoviesListModels.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		06B9AA0024314D95008773AD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				064131642425A72C001E83C5 /* FavoriteMoviesViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		06B9AA0124314DA0008773AD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				06B9A9F024313419008773AD /* FavoriteMoviesInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		06B9AA0224314DB0008773AD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				06B9A9F224313442008773AD /* FavoriteMoviesPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		06B9AA0324314DB9008773AD /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				06B9A9F424313455008773AD /* FavoriteMoviesWorker.swift */,
+			);
+			path = Worker;
 			sourceTree = "<group>";
 		};
 		9EB1DE2F32A6ED47CF7C6A9B /* Pods */ = {
