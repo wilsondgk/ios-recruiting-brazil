@@ -12,12 +12,16 @@ protocol FavoriteMoviesNavigationProtocol: class {
     func showFavoriteMovieDetail()
 }
 
-class FavoriteMoviesViewController: UIViewController {
-
-    private var coordinator: FavoriteMoviesNavigationProtocol
+protocol FavoriteMoviesInteractorProtocol {
     
-    init(withCoordinator coordinator: FavoriteMoviesNavigationProtocol) {
-        self.coordinator = coordinator
+}
+
+class FavoriteMoviesViewController: UIViewController, FavoriteMoviesViewProtocol {
+
+    private let interactor: FavoriteMoviesInteractorProtocol
+    
+    init(withInteractor interactor: FavoriteMoviesInteractorProtocol) {
+        self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,29 +31,17 @@ class FavoriteMoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = String(key: "favorites_title")
     }
     
     override func loadView() {
         super.loadView()
-        title = String(key: "favorites_title")
         
         setupLayout()
     }
     
     private func setupLayout() {
-        let littleView = UIView()
-        littleView.backgroundColor = .darkGray
-        view.addSubview(littleView, constraints: [
-            littleView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-            littleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            littleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            littleView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
-        ])
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
-        littleView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func tap() {
-        coordinator.showFavoriteMovieDetail()
+        
     }
 }

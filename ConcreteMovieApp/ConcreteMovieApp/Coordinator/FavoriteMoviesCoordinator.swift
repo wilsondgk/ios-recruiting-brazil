@@ -18,9 +18,14 @@ final class FavoriteMoviesCoordinator: Coordinator, FavoriteMoviesNavigationProt
     }
     
     func start() {
-        let favoriteMoviesVC = FavoriteMoviesViewController(withCoordinator: self)
-        favoriteMoviesVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorite_icon") , tag: 1)
-        navigationController.setViewControllers([favoriteMoviesVC], animated: false)
+        let presenter = FavoriteMoviesPresenter()
+        let worker = FavoriteMoviesWorker(withProvider: MoyaApiProvider())
+        let interactor = FavoriteMoviesInteractor(withPresenter: presenter, andWorker: worker)
+        let favoriteMoviesVC = FavoriteMoviesViewController(withInteractor: interactor)
+        presenter.setView(favoriteMoviesVC)
+        let tabItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favorite_icon"), tag: 1)
+        favoriteMoviesVC.tabBarItem = tabItem
+        navigationController.setViewControllers([favoriteMoviesVC], animated: true)
     }
     
     //MARK: FavoriteMoviesNavigationProtocol

@@ -42,13 +42,14 @@ final class MoviesListViewController: BaseViewController, MoviesListViewProtocol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = String(key: "movies_title")
         
         interactor.viewDidLoad()
     }
     
     override func loadView() {
         super.loadView()
-        title = String(key: "movies_title")
+        
         
         setupLayout()
     }
