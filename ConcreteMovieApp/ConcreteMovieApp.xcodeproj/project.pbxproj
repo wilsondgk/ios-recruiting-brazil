@@ -272,12 +272,12 @@
 			children = (
 				06558AEB242ED17A00662113 /* CollectionViewDataSource */,
 				06558ADA242EA3AB00662113 /* View */,
+				06B9A9FD24314D47008773AD /* ViewController */,
+				06B9A9FB24314D1A008773AD /* Interactor */,
+				06B9A9FC24314D2A008773AD /* Presenter */,
 				06558ADF242EA44700662113 /* ViewModel */,
-				0641312624253BAF001E83C5 /* MoviesListViewController.swift */,
-				064131732426D389001E83C5 /* MoviesListInteractor.swift */,
-				064131752426D432001E83C5 /* MoviesListPresenter.swift */,
-				06558A972426EFC700662113 /* MoviesListWorker.swift */,
-				06558AA02428151900662113 /* MoviesListModels.swift */,
+				06B9A9FE24314D5B008773AD /* Worker */,
+				06B9A9FF24314D6A008773AD /* Model */,
 			);
 			path = MoviesList;
 			sourceTree = "<group>";
@@ -372,6 +372,46 @@
 				06B9A9F824314A9A008773AD /* MovieDetailViewController.xib */,
 			);
 			path = MovieDetail;
+			sourceTree = "<group>";
+		};
+		06B9A9FB24314D1A008773AD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				064131732426D389001E83C5 /* MoviesListInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		06B9A9FC24314D2A008773AD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				064131752426D432001E83C5 /* MoviesListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		06B9A9FD24314D47008773AD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0641312624253BAF001E83C5 /* MoviesListViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		06B9A9FE24314D5B008773AD /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				06558A972426EFC700662113 /* MoviesListWorker.swift */,
+			);
+			path = Worker;
+			sourceTree = "<group>";
+		};
+		06B9A9FF24314D6A008773AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				06558AA02428151900662113 /* MoviesListModels.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9EB1DE2F32A6ED47CF7C6A9B /* Pods */ = {
