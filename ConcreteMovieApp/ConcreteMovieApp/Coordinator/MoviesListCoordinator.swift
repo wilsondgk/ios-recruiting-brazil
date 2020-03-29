@@ -20,7 +20,8 @@ final class MoviesListCoordinator: Coordinator, MoviesListNavigationProtocol {
     func start() {
         let presenter = MoviesListPresenter()
         let worker = MoviesListWorker(withProvider: MoyaApiProvider())
-        let interactor = MoviesListInteractor(withPresenter: presenter,
+        let interactor = MoviesListInteractor(withCoordinator: self,
+                                              withPresenter: presenter,
                                               andWorker: worker)
         let movieListVC = MoviesListViewController(withInteractor: interactor)
         presenter.setView(movieListVC)
@@ -30,6 +31,6 @@ final class MoviesListCoordinator: Coordinator, MoviesListNavigationProtocol {
     
     //MARK: MoviesListNavigationProtocol
     func showMovieDetailVC() {
-        navigationController.pushViewController(UIViewController(), animated: true)
+        navigationController.pushViewController(MovieDetailViewController(), animated: true)
     }
 }

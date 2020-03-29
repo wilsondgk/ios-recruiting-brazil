@@ -12,5 +12,7 @@ class MovieDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Detalhe do Filme"
     }
 }

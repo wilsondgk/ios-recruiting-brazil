@@ -8,12 +8,9 @@
 
 import UIKit
 
-protocol MoviesListNavigationProtocol: class {
-    func showMovieDetailVC()
-}
-
 protocol MoviesListInteractorProtocol: class {
     func viewDidLoad()
+    func didClickInMovie(atIndex indexPath: IndexPath)
 }
 
 final class MoviesListViewController: BaseViewController, MoviesListViewProtocol {
@@ -22,7 +19,6 @@ final class MoviesListViewController: BaseViewController, MoviesListViewProtocol
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: MovieCollectionViewCell.reuseIdentifier)
-        
         collectionView.backgroundColor = UIColor.white
         
         return collectionView
@@ -50,7 +46,6 @@ final class MoviesListViewController: BaseViewController, MoviesListViewProtocol
     override func loadView() {
         super.loadView()
         
-        
         setupLayout()
     }
     
@@ -59,12 +54,13 @@ final class MoviesListViewController: BaseViewController, MoviesListViewProtocol
     }
     
     //MARK: MoviesListViewProtocol
-//    func showLoading(withMessage message: String) {
-//        showLoading(withMessage: message)
-//    }
     
     func updateMovies(withMoviesViewModel viewModels: [DefaultMovieViewModel]) {
         moviesDataSource = DefaultMovieDataSource(collectionView: collectionView, array: viewModels)
+        moviesDataSource?.collectionItemSelectionHandler = { [weak self] indexPath in
+            guard let strongSelf = self else { return }
+            self?.interactor.didClickInMovie(atIndex: indexPath)
+        }
         collectionView.reloadData()
     }
 }

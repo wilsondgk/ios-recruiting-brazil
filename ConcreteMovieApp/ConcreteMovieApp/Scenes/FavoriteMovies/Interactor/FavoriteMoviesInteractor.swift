@@ -17,6 +17,7 @@ protocol FavoriteMoviesPresenterProtocol {
 }
 
 final class FavoriteMoviesInteractor: FavoriteMoviesInteractorProtocol {
+    
     private let presenter: FavoriteMoviesPresenterProtocol
     private let worker: FavoriteMoviesWorkerProtocol
     
