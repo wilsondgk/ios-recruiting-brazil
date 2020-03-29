@@ -16,9 +16,20 @@ protocol MoviesListInteractorProtocol: class {
     func viewDidLoad()
 }
 
-class MoviesListViewController: BaseViewController, MoviesListViewProtocol {
+final class MoviesListViewController: BaseViewController, MoviesListViewProtocol {
+    
+    //MARK: UIComponents
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: MovieCollectionViewCell.reuseIdentifier)
+        
+        collectionView.backgroundColor = UIColor.white
+        
+        return collectionView
+    }()
     
     private let interactor: MoviesListInteractorProtocol
+    private var moviesDataSource: DefaultMovieDataSource?
     
     init(withInteractor interactor: MoviesListInteractorProtocol) {
         self.interactor = interactor
@@ -41,46 +52,18 @@ class MoviesListViewController: BaseViewController, MoviesListViewProtocol {
         
         setupLayout()
     }
-    let littleView = UIView()
+    
     private func setupLayout() {
-        
-        
-        littleView.backgroundColor = Colors.marineBlue
-//        littleView.setState(.empty(emptyMessage: "error error error error error error error error error error ", image: UIImage(named: "search_icon")))
-//        littleView.setState(.loading(loadingMessage: "wilson\nwilson\nwilson\nwilson\n"))
-        view.addSubview(littleView, constraints: [
-            littleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            littleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            littleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            littleView.heightAnchor.constraint(equalToConstant: 100)
-//            littleView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
-        ])
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
-        littleView.addGestureRecognizer(tapGesture)
-    }
-    
-    
-    var iterator = 0
-    @objc func tap() {
-        switch iterator % 4 {
-        case 0:
-            showLoadingInView(withMessage: "Wilson Kim Wilson Kim Wilson Kim \nWilson Kim Wilson Kim ")
-        case 1:
-            showError(nil, title: "Título")
-        case 2:
-            setNormalLayout()
-        case 3:
-            setNormalLayout()
-        default:
-            showLoading()
-        }
-        iterator += 1
-        view.bringSubviewToFront(littleView)
+        view.addSubview(equalConstraintsFor: collectionView)
     }
     
     //MARK: MoviesListViewProtocol
-    func showLoading() {
-        
+//    func showLoading(withMessage message: String) {
+//        showLoading(withMessage: message)
+//    }
+    
+    func updateMovies(withMoviesViewModel viewModels: [DefaultMovieViewModel]) {
+        moviesDataSource = DefaultMovieDataSource(collectionView: collectionView, array: viewModels)
+        collectionView.reloadData()
     }
 }

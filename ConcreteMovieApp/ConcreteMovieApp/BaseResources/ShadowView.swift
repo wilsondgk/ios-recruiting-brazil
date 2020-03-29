@@ -21,8 +21,8 @@ class ShadowView: UIView {
     }
     
     private func setup() {
-        self.layer.shadowColor = Colors.lightGray.cgColor
-        self.layer.shadowOpacity = 0.7
+        self.layer.shadowColor = Colors.darkGray.cgColor
+        self.layer.shadowOpacity = 0.3
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
         self.layer.shadowRadius = 4
         self.layer.cornerRadius = 4

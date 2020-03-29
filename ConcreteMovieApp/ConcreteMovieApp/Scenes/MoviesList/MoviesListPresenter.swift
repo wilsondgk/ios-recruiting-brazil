@@ -9,7 +9,8 @@
 import Foundation
 
 protocol MoviesListViewProtocol: class {
-    func showLoading()
+    func showLoading(withMessage message:String)
+    func updateMovies(withMoviesViewModel viewModels: [DefaultMovieViewModel])
 }
 
 class MoviesListPresenter: MoviesListPresenterProtocol {
@@ -21,6 +22,13 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
     }
     
     func presentLoadingState() {
-        view?.showLoading()
+        view?.showLoading(withMessage: "Carregando filmes...")
+    }
+    
+    func presentMovies(_ movies: [MovieResponseModel]) {
+        let viewModels = movies.map { (model) -> DefaultMovieViewModel in
+            return DefaultMovieViewModel(name: model.title)
+        }
+        view?.updateMovies(withMoviesViewModel: viewModels)
     }
 }

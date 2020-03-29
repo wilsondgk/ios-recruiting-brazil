@@ -79,20 +79,20 @@ class GeneralMovieResponseModel: Codable {
 }
 
 class MovieResponseModel: Codable {
-    var id:Int64
-    var averageRating:Double
-    var genresIds:[Int]
-    var originalTitle:String
-    var backdropPath:String?
-    var isAdult:Bool
-    var popularity:Double
-    var posterPath:String
-    var title:String
-    var overview:String
-    var originalLanguage:String
-    var voteCount:Int64
-    var releaseDate:String
-    var isVideo:Bool
+    var id: Int64
+    var averageRating: Double
+    var genresIds: [Int]
+    var originalTitle: String
+    var backdropPath: String?
+    var isAdult: Bool
+    var popularity: Double
+    var posterPath: String
+    var title: String
+    var overview: String
+    var originalLanguage: String
+    var voteCount: Int64
+    var releaseDate: String
+    var isVideo: Bool
     
     enum CodingKeys: String, CodingKey {
         case id = "id"

@@ -99,7 +99,7 @@ class BaseViewController: UIViewController {
         return NSError(domain: bundle, code:7779, userInfo:[ NSLocalizedDescriptionKey: message])
     }
     
-    func showLoadingInView(withMessage message:String) {
+    func showLoading(withMessage message:String) {
         showLoadingInView(nil, withMessage: message)
     }
     
@@ -140,10 +140,5 @@ class BaseViewController: UIViewController {
         }
         
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func getCoreDataContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
     }
 }

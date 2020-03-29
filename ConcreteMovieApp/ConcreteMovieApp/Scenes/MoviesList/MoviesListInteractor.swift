@@ -10,6 +10,7 @@ import Foundation
 
 protocol MoviesListPresenterProtocol {
     func presentLoadingState()
+    func presentMovies(_ movies: [MovieResponseModel])
 }
 
 protocol MoviesListWorkerProtocol {
@@ -28,11 +29,11 @@ final class MoviesListInteractor: MoviesListInteractorProtocol {
     }
     
     func viewDidLoad() {
-        presenter.presentLoadingState()
-        worker.getMoviesList(successCompletion: { (mmm) in
-            print("===== \(mmm)")
-        }) { (eee) in
-            print("===== \(eee)")
+//        presenter.presentLoadingState()
+        worker.getMoviesList(successCompletion: { [weak self] result in
+            self?.presenter.presentMovies(result.results)
+        }) { (error) in
+            //todo: add error handler
         }
     }
 }
