@@ -15,4 +15,8 @@ class FavoriteMoviesWorker: FavoriteMoviesWorkerProtocol {
     init(withProvider provider: ApiProviderProtocol) {
         self.provider = provider
     }
+    
+    func getFavoriteMovies() {
+        
+    }
 }

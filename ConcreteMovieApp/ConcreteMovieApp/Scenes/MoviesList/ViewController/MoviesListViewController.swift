@@ -23,9 +23,9 @@ final class MoviesListViewController: BaseViewController, MoviesListViewProtocol
         
         return collectionView
     }()
+    private var moviesDataSource: DefaultMovieDataSource?
     
     private let interactor: MoviesListInteractorProtocol
-    private var moviesDataSource: DefaultMovieDataSource?
     
     init(withInteractor interactor: MoviesListInteractorProtocol) {
         self.interactor = interactor

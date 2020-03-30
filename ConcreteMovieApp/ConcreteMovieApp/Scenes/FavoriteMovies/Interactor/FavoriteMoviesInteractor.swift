@@ -9,7 +9,7 @@
 import Foundation
 
 protocol FavoriteMoviesWorkerProtocol {
-    
+    func getFavoriteMovies()
 }
 
 protocol FavoriteMoviesPresenterProtocol {
@@ -17,7 +17,7 @@ protocol FavoriteMoviesPresenterProtocol {
 }
 
 final class FavoriteMoviesInteractor: FavoriteMoviesInteractorProtocol {
-    
+     
     private let presenter: FavoriteMoviesPresenterProtocol
     private let worker: FavoriteMoviesWorkerProtocol
     
@@ -25,5 +25,9 @@ final class FavoriteMoviesInteractor: FavoriteMoviesInteractorProtocol {
          andWorker worker: FavoriteMoviesWorkerProtocol) {
         self.presenter = presenter
         self.worker = worker
+    }
+    
+    func viewDidLoad() {
+        
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol FavoriteMoviesViewProtocol {
-    
+    func updateFavoriteMovies(withViewModels viewModels: [FavoriteMovieViewModel])
 }
 
 class FavoriteMoviesPresenter: FavoriteMoviesPresenterProtocol {

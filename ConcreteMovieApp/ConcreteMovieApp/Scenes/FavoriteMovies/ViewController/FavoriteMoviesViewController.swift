@@ -13,12 +13,22 @@ protocol FavoriteMoviesNavigationProtocol: class {
 }
 
 protocol FavoriteMoviesInteractorProtocol {
-    
+    func viewDidLoad()
 }
 
 class FavoriteMoviesViewController: UIViewController, FavoriteMoviesViewProtocol {
 
     private let interactor: FavoriteMoviesInteractorProtocol
+    private var favoriteMoviesDataSource: FavoriteMoviesCollectionViewDataSource?
+    
+    //MARK: UIComponents
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.register(FavoriteMovieCollectionViewCell.self, forCellWithReuseIdentifier: FavoriteMovieCollectionViewCell.reuseIdentifier)
+        collectionView.backgroundColor = UIColor.white
+        
+        return collectionView
+    }()
     
     init(withInteractor interactor: FavoriteMoviesInteractorProtocol) {
         self.interactor = interactor
@@ -39,9 +49,18 @@ class FavoriteMoviesViewController: UIViewController, FavoriteMoviesViewProtocol
         super.loadView()
         
         setupLayout()
+        interactor.viewDidLoad()
+        
+        updateFavoriteMovies(withViewModels: [FavoriteMovieViewModel(title: "Nome"),FavoriteMovieViewModel(title: "Nome"),FavoriteMovieViewModel(title: "Nome"),])
     }
     
     private func setupLayout() {
-        
+        view.addSubview(equalConstraintsFor: collectionView)
+    }
+    
+    //MARK: FavoriteMoviesViewProtocol
+    func updateFavoriteMovies(withViewModels viewModels: [FavoriteMovieViewModel]) {
+        favoriteMoviesDataSource = FavoriteMoviesCollectionViewDataSource(collectionView: collectionView, array: viewModels)
+        collectionView.reloadData()
     }
 }
