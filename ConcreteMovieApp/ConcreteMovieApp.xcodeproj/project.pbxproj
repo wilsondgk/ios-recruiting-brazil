@@ -62,6 +62,7 @@
 		06B9AA0624325B22008773AD /* FavoriteMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9AA0524325B22008773AD /* FavoriteMovieCollectionViewCell.swift */; };
 		06B9AA1024325C12008773AD /* FavoriteMoviesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9AA0F24325C12008773AD /* FavoriteMoviesCollectionViewDataSource.swift */; };
 		06B9AA1324325DF5008773AD /* FavoriteMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9AA1224325DF5008773AD /* FavoriteMovieViewModel.swift */; };
+		06B9AA18243292BE008773AD /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9AA17243292BE008773AD /* CoreDataProvider.swift */; };
 		0E1B2B8B421858AF1576EAFE /* Pods_ConcreteMovieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34D96F36D6774393CD6FC37 /* Pods_ConcreteMovieAppTests.framework */; };
 		42A5EB41205A02E0147478A2 /* Pods_ConcreteMovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AA68F7C88F50822651AD3F /* Pods_ConcreteMovieApp.framework */; };
 /* End PBXBuildFile section */
@@ -136,6 +137,7 @@
 		06B9AA0524325B22008773AD /* FavoriteMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		06B9AA0F24325C12008773AD /* FavoriteMoviesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		06B9AA1224325DF5008773AD /* FavoriteMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieViewModel.swift; sourceTree = "<group>"; };
+		06B9AA17243292BE008773AD /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		50CC70E107296A6517FEBEA4 /* Pods-ConcreteMovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteMovieApp.release.xcconfig"; path = "Target Support Files/Pods-ConcreteMovieApp/Pods-ConcreteMovieApp.release.xcconfig"; sourceTree = "<group>"; };
 		5355592197C11B8495AF1B4E /* Pods-ConcreteMovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteMovieAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ConcreteMovieAppTests/Pods-ConcreteMovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		84AA68F7C88F50822651AD3F /* Pods_ConcreteMovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConcreteMovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,9 +307,8 @@
 		06558A992426F90100662113 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				06558A9A2426F92A00662113 /* HttpConnectionProtocol.swift */,
-				06558A9C2426FB0100662113 /* HttpRequestBuilder.swift */,
-				06558A9E2426FDC000662113 /* MoyaProvider.swift */,
+				06B9AA16243292AD008773AD /* LocalProviders */,
+				06B9AA152432929A008773AD /* ExternalProviders */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -477,6 +478,24 @@
 				06B9AA1224325DF5008773AD /* FavoriteMovieViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		06B9AA152432929A008773AD /* ExternalProviders */ = {
+			isa = PBXGroup;
+			children = (
+				06558A9A2426F92A00662113 /* HttpConnectionProtocol.swift */,
+				06558A9C2426FB0100662113 /* HttpRequestBuilder.swift */,
+				06558A9E2426FDC000662113 /* MoyaProvider.swift */,
+			);
+			path = ExternalProviders;
+			sourceTree = "<group>";
+		};
+		06B9AA16243292AD008773AD /* LocalProviders */ = {
+			isa = PBXGroup;
+			children = (
+				06B9AA17243292BE008773AD /* CoreDataProvider.swift */,
+			);
+			path = LocalProviders;
 			sourceTree = "<group>";
 		};
 		9EB1DE2F32A6ED47CF7C6A9B /* Pods */ = {
@@ -697,6 +716,7 @@
 				06B9AA0624325B22008773AD /* FavoriteMovieCollectionViewCell.swift in Sources */,
 				06558AD5242D5E3900662113 /* CollectionDataProvider.swift in Sources */,
 				06B9AA1324325DF5008773AD /* FavoriteMovieViewModel.swift in Sources */,
+				06B9AA18243292BE008773AD /* CoreDataProvider.swift in Sources */,
 				0641312124252E8B001E83C5 /* Colors.swift in Sources */,
 				06B9A9F324313442008773AD /* FavoriteMoviesPresenter.swift in Sources */,
 				06B9A9F124313419008773AD /* FavoriteMoviesInteractor.swift in Sources */,

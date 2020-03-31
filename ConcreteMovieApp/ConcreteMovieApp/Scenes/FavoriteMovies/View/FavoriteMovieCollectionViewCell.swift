@@ -33,6 +33,7 @@ class FavoriteMovieCollectionViewCell: UICollectionViewCell, ConfigurableCell {
     
     func bind(_ item: FavoriteMovieViewModel, at indexPath: IndexPath) {
         backgroundColor = UIColor.green
+        titleLabel.text = item.title
     }
     
     private func setupLayout() {

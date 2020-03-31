@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         window?.backgroundColor = UIColor.white
         window?.rootViewController = navigationController
         
-        let mainCoordinator = MainCoordinator(withNavigationController: navigationController)
+        let mainCoordinator = MainCoordinator(withNavigationController: navigationController, andViewContext: persistentContainer.viewContext)
         mainCoordinator.start()
         window?.makeKeyAndVisible()
         return true

@@ -7,19 +7,22 @@
 //
 
 import Foundation
+import CoreData
 import UIKit
 
 final class FavoriteMoviesCoordinator: Coordinator, FavoriteMoviesNavigationProtocol {
     
     let navigationController: UINavigationController
+    let context: NSManagedObjectContext
     
-    init(withNavigationController navigationController: UINavigationController) {
+    init(withNavigationController navigationController: UINavigationController, andViewContext context: NSManagedObjectContext) {
         self.navigationController = navigationController
+        self.context = context
     }
     
     func start() {
         let presenter = FavoriteMoviesPresenter()
-        let worker = FavoriteMoviesWorker(withProvider: MoyaApiProvider())
+        let worker = FavoriteMoviesWorker(withProvider: CoreDataProvider(withContext: context))
         let interactor = FavoriteMoviesInteractor(withPresenter: presenter, andWorker: worker)
         let favoriteMoviesVC = FavoriteMoviesViewController(withInteractor: interactor)
         presenter.setView(favoriteMoviesVC)

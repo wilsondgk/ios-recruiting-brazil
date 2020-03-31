@@ -8,15 +8,22 @@
 
 import Foundation
 
-protocol FavoriteMoviesViewProtocol {
+protocol FavoriteMoviesViewProtocol: class {
     func updateFavoriteMovies(withViewModels viewModels: [FavoriteMovieViewModel])
 }
 
 class FavoriteMoviesPresenter: FavoriteMoviesPresenterProtocol {
     
-    var view: FavoriteMoviesViewProtocol?
+    private weak var view: FavoriteMoviesViewProtocol?
     
     func setView(_ view: FavoriteMoviesViewProtocol) {
         self.view = view
+    }
+    
+    func presentFavoriteMovies(_ movies: [MovieResponseModel]) {
+        let movieViewModels = movies.map { (model) -> FavoriteMovieViewModel in
+            return FavoriteMovieViewModel(title: model.title)
+        }
+        view?.updateFavoriteMovies(withViewModels: movieViewModels)
     }
 }

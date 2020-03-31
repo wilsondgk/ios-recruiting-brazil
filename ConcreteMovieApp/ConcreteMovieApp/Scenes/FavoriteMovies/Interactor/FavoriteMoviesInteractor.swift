@@ -9,11 +9,11 @@
 import Foundation
 
 protocol FavoriteMoviesWorkerProtocol {
-    func getFavoriteMovies()
+    func getFavoriteMovies(successCompletion: @escaping(_ movies: [MovieResponseModel]) -> Void, errorCompletion: @escaping(_ error: Error) -> Void)
 }
 
 protocol FavoriteMoviesPresenterProtocol {
-    
+    func presentFavoriteMovies(_ movies: [MovieResponseModel])
 }
 
 final class FavoriteMoviesInteractor: FavoriteMoviesInteractorProtocol {
@@ -28,6 +28,10 @@ final class FavoriteMoviesInteractor: FavoriteMoviesInteractorProtocol {
     }
     
     func viewDidLoad() {
-        
+        worker.getFavoriteMovies(successCompletion: { [weak self](moviesList) in
+            self?.presenter.presentFavoriteMovies(moviesList)
+        }) { (errpr) in
+            //TODO: add error
+        }
     }
 }

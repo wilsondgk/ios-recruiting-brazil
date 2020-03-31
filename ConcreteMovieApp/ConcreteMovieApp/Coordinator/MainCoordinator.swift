@@ -8,14 +8,17 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 final class MainCoordinator: Coordinator {
     
     private let navigationController: UINavigationController
+    private let context: NSManagedObjectContext
     private var childCoordinators: [Coordinator] = []
     
-    init(withNavigationController navigationController: UINavigationController) {
+    init(withNavigationController navigationController: UINavigationController, andViewContext context: NSManagedObjectContext) {
         self.navigationController = navigationController
+        self.context = context
     }
     
     func start() {
@@ -35,7 +38,7 @@ final class MainCoordinator: Coordinator {
     
     private func createFavoriteMoviesViewController() -> UINavigationController {
         let navVC = BaseNavigationController()
-        let favoriteCoordinator = FavoriteMoviesCoordinator(withNavigationController: navVC)
+        let favoriteCoordinator = FavoriteMoviesCoordinator(withNavigationController: navVC, andViewContext: context)
         childCoordinators.append(favoriteCoordinator)
         favoriteCoordinator.start()
         

@@ -51,7 +51,16 @@ class FavoriteMoviesViewController: UIViewController, FavoriteMoviesViewProtocol
         setupLayout()
         interactor.viewDidLoad()
         
-        updateFavoriteMovies(withViewModels: [FavoriteMovieViewModel(title: "Nome"),FavoriteMovieViewModel(title: "Nome"),FavoriteMovieViewModel(title: "Nome"),])
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let provider = CoreDataProvider(withContext: appDelegate.persistentContainer.viewContext)
+//        let data = MovieData(context: appDelegate.persistentContainer.viewContext)
+//        data.id = 10
+//        data.name = "wilson"
+//        provider.saveObject(data, successCompletion: {
+//            print("======= ssssss")
+//        }) { (error) in
+//            print("======= eeeeeee")
+//        }
     }
     
     private func setupLayout() {
