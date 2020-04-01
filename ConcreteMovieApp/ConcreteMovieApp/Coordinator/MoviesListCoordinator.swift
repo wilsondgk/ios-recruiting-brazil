@@ -8,13 +8,16 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 final class MoviesListCoordinator: Coordinator, MoviesListNavigationProtocol {
     
     private let navigationController: UINavigationController
+    let context: NSManagedObjectContext
     
-    init(withNavigationController navigationController: UINavigationController) {
+    init(withNavigationController navigationController: UINavigationController, andViewContext context: NSManagedObjectContext) {
         self.navigationController = navigationController
+        self.context = context
     }
     
     func start() {
@@ -31,6 +34,10 @@ final class MoviesListCoordinator: Coordinator, MoviesListNavigationProtocol {
     
     //MARK: MoviesListNavigationProtocol
     func showMovieDetailVC() {
-        navigationController.pushViewController(MovieDetailViewController(), animated: true)
+        let presenter = MovieDetailPresenter()
+        let worker = MovieDetailWorker(withProvider: CoreDataProvider(withContext: context))
+        let interactor = MovieDetailInteractor(withPresenter: presenter, andWorker: worker)
+        let movieDetailVC = MovieDetailViewController(withInteractor: interactor)
+        navigationController.pushViewController(movieDetailVC, animated: true)
     }
 }

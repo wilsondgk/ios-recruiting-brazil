@@ -29,7 +29,7 @@ final class MainCoordinator: Coordinator {
     
     private func createMovieListViewController() -> UINavigationController {
         let navVC = BaseNavigationController()
-        let moviesListCoordinator = MoviesListCoordinator(withNavigationController: navVC)
+        let moviesListCoordinator = MoviesListCoordinator(withNavigationController: navVC, andViewContext: context)
         childCoordinators.append(moviesListCoordinator)
         moviesListCoordinator.start()
         

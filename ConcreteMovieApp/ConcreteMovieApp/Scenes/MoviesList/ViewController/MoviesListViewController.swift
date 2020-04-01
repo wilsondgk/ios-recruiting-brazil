@@ -59,7 +59,7 @@ final class MoviesListViewController: BaseViewController, MoviesListViewProtocol
         moviesDataSource = DefaultMovieDataSource(collectionView: collectionView, array: viewModels)
         moviesDataSource?.collectionItemSelectionHandler = { [weak self] indexPath in
             guard let strongSelf = self else { return }
-            self?.interactor.didClickInMovie(atIndex: indexPath)
+            strongSelf.interactor.didClickInMovie(atIndex: indexPath)
         }
         collectionView.reloadData()
     }
