@@ -11,6 +11,7 @@ import UIKit
 protocol MoviesListInteractorProtocol: class {
     func viewDidLoad()
     func didClickInMovie(atIndex indexPath: IndexPath)
+    func reloadMovies()
 }
 
 final class MoviesListViewController: BaseViewController, MoviesListViewProtocol {
@@ -41,6 +42,12 @@ final class MoviesListViewController: BaseViewController, MoviesListViewProtocol
         title = String(key: "movies_title")
         
         interactor.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        interactor.reloadMovies()
     }
     
     override func loadView() {

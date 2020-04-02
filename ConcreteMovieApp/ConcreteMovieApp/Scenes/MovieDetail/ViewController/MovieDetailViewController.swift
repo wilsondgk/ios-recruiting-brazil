@@ -9,12 +9,15 @@
 import UIKit
 
 protocol MovieDetailInteractorProtocol {
-    
+    func viewDidLoad()
+    func favoriteButtonClicked()
 }
 
 class MovieDetailViewController: UIViewController, MovieDetailViewProtocol {
 
     private let interactor: MovieDetailInteractorProtocol
+    @IBOutlet private weak var favoriteButton: UIButton!
+    @IBOutlet private weak var movieTitleLabel: UILabel!
     
     init(withInteractor interactor: MovieDetailInteractorProtocol) {
         self.interactor = interactor
@@ -29,5 +32,16 @@ class MovieDetailViewController: UIViewController, MovieDetailViewProtocol {
         super.viewDidLoad()
         
         title = "Detalhe do Filme"
+        interactor.viewDidLoad()
+    }
+    
+    @IBAction func favoriteMovieButtonClicked(_ sender: Any) {
+        interactor.favoriteButtonClicked()
+    }
+    
+    //MARK: MovieDetailViewProtocol
+    func updateMovieDetails(_ movie: MovieResponseModel, isFavorite: Bool) {
+        movieTitleLabel.text = movie.title
+        favoriteButton.isSelected = isFavorite
     }
 }

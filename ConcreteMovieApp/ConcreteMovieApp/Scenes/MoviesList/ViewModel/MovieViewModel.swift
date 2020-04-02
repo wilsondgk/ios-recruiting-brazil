@@ -10,4 +10,5 @@ import Foundation
 
 struct DefaultMovieViewModel {
     let name: String
+    let isFavorite: Bool
 }

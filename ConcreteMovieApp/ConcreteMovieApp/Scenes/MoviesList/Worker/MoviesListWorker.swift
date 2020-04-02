@@ -10,10 +10,23 @@ import Foundation
 
 final class MoviesListWorker: MoviesListWorkerProtocol {
     
-    private let provider: ApiProviderProtocol
+    private let externalProvider: ApiProviderProtocol
+    private let localProvider: LocalApiProtocol
     
-    init(withProvider provider: ApiProviderProtocol) {
-        self.provider = provider
+    init(withExternalProvider externalProvider: ApiProviderProtocol, andLocalProvider localProvider: LocalApiProtocol) {
+        self.externalProvider = externalProvider
+        self.localProvider = localProvider
+    }
+    
+    func getFavoriteMoviesList(successCompletion: @escaping (_ movies: [MovieResponseModel]) -> Void, failCompletion: @escaping (_ error: Error) -> Void) {
+        localProvider.fetch(MovieData.self, predicate: nil, successCompletion: { (moviesData) in
+            let movies = moviesData.compactMap { [weak self] (data) -> MovieResponseModel? in
+                return self?.localProvider.bindMovieData(toMovieModel: data)
+            }
+            successCompletion(movies)
+        }) { (error) in
+            failCompletion(error)
+        }
     }
     
     func getMoviesList(successCompletion: @escaping (_ movies: GeneralMovieResponseModel) -> Void, failCompletion: @escaping (_ error: Error) -> Void) {
@@ -22,7 +35,7 @@ final class MoviesListWorker: MoviesListWorkerProtocol {
             .withPath("/movie/popular")
             .withQuery(params)
             .create()
-        provider.makeRequest(withRequestParams: request) { (response: (Response<GeneralMovieResponseModel, EmptyStruct>)) in
+        externalProvider.makeRequest(withRequestParams: request) { (response: (Response<GeneralMovieResponseModel, EmptyStruct>)) in
             switch response {
             case .success(let movies):
                 successCompletion(movies)

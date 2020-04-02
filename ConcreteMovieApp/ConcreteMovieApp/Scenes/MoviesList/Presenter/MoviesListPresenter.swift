@@ -25,9 +25,10 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
         view?.showLoading(withMessage: "Carregando filmes...")
     }
     
-    func presentMovies(_ movies: [MovieResponseModel]) {
+    func presentMovies(_ movies: [MovieResponseModel], withFavoriteMovies favoriteMovies: [Int64 : Bool?]) {
         let viewModels = movies.map { (model) -> DefaultMovieViewModel in
-            return DefaultMovieViewModel(name: model.title)
+            let isFavorite = favoriteMovies[model.id] == nil ? false : true
+            return DefaultMovieViewModel(name: model.title, isFavorite:  isFavorite)
         }
         view?.updateMovies(withMoviesViewModel: viewModels)
     }

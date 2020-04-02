@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailViewController" customModule="ConcreteMovieApp" customModuleProvider="target">
             <connections>
+                <outlet property="favoriteButton" destination="pQt-yN-WWb" id="gBx-58-neA"/>
+                <outlet property="movieTitleLabel" destination="NIm-ln-ANt" id="uW1-0I-rNq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,12 +27,33 @@
                         <constraint firstAttribute="height" constant="128" id="5QC-wS-hE0"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQt-yN-WWb">
+                    <rect key="frame" x="184" y="433" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="LEV-Wi-hmc"/>
+                        <constraint firstAttribute="width" constant="46" id="eMo-Yj-4Kv"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="favoriteMovieButtonClicked:" destination="-1" eventType="touchUpInside" id="aJN-ZE-l8v"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIm-ln-ANt">
+                    <rect key="frame" x="186" y="396" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="pQt-yN-WWb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7aS-vJ-NTL"/>
                 <constraint firstItem="aFS-qh-ZO3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="9Ia-jz-FSi"/>
+                <constraint firstItem="pQt-yN-WWb" firstAttribute="top" secondItem="NIm-ln-ANt" secondAttribute="bottom" constant="16" id="B3j-vX-bEP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aFS-qh-ZO3" secondAttribute="trailing" id="FbN-BS-J1u"/>
                 <constraint firstItem="aFS-qh-ZO3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="exY-iS-xHU"/>
+                <constraint firstItem="NIm-ln-ANt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jsu-Ss-prT"/>
+                <constraint firstItem="pQt-yN-WWb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="r2t-UY-a1K"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="106"/>

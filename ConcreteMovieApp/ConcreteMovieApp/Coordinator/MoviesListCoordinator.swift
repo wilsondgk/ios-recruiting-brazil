@@ -22,7 +22,8 @@ final class MoviesListCoordinator: Coordinator, MoviesListNavigationProtocol {
     
     func start() {
         let presenter = MoviesListPresenter()
-        let worker = MoviesListWorker(withProvider: MoyaApiProvider())
+        let worker = MoviesListWorker(withExternalProvider: MoyaApiProvider(),
+                                      andLocalProvider: CoreDataProvider(withContext: context))
         let interactor = MoviesListInteractor(withCoordinator: self,
                                               withPresenter: presenter,
                                               andWorker: worker)
@@ -33,11 +34,15 @@ final class MoviesListCoordinator: Coordinator, MoviesListNavigationProtocol {
     }
     
     //MARK: MoviesListNavigationProtocol
-    func showMovieDetailVC() {
+    func showMovieDetailVC(fromMovie movie: MovieResponseModel, isFavorite: Bool) {
         let presenter = MovieDetailPresenter()
         let worker = MovieDetailWorker(withProvider: CoreDataProvider(withContext: context))
-        let interactor = MovieDetailInteractor(withPresenter: presenter, andWorker: worker)
+        let interactor = MovieDetailInteractor(withPresenter: presenter,
+                                               withWorker: worker,
+                                               andMovie: movie,
+                                               isFavorite: isFavorite)
         let movieDetailVC = MovieDetailViewController(withInteractor: interactor)
+        presenter.setView(movieDetailVC)
         navigationController.pushViewController(movieDetailVC, animated: true)
     }
 }

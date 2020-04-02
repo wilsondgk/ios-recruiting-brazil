@@ -25,6 +25,7 @@ struct GeneralMovieResponseModel: Codable {
 struct MovieResponseModel: Codable {
     var id: Int64
     var title: String
+    var isFavorite: Bool? = false
 //    var averageRating: Double
 //    var genresIds: [Int]
 //    var originalTitle: String
