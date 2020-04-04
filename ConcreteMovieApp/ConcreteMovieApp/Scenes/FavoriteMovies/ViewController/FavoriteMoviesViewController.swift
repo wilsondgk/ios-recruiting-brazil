@@ -14,6 +14,7 @@ protocol FavoriteMoviesNavigationProtocol: class {
 
 protocol FavoriteMoviesInteractorProtocol {
     func viewDidLoad()
+    func reloadFavoriteMovies()
 }
 
 class FavoriteMoviesViewController: UIViewController, FavoriteMoviesViewProtocol {
@@ -50,17 +51,12 @@ class FavoriteMoviesViewController: UIViewController, FavoriteMoviesViewProtocol
         
         setupLayout()
         interactor.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let provider = CoreDataProvider(withContext: appDelegate.persistentContainer.viewContext)
-//        let data = MovieData(context: appDelegate.persistentContainer.viewContext)
-//        data.id = 10
-//        data.name = "wilson"
-//        provider.saveObject(data, successCompletion: {
-//            print("======= ssssss")
-//        }) { (error) in
-//            print("======= eeeeeee")
-//        }
+        interactor.reloadFavoriteMovies()
     }
     
     private func setupLayout() {

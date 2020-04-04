@@ -9,14 +9,29 @@
 import Foundation
 import Moya
 
+extension Data {
+    var prettyPrintedJSONString: String? {
+        guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
+            let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
+            let prettyPrintedString = String(data: data, encoding: String.Encoding.utf8) else { return nil }
+        
+        return prettyPrintedString
+    }
+}
+
 class MoyaApiProvider: ApiProviderProtocol {
     
     let provider: MoyaProvider<Connection> = MoyaProvider()
     
     func makeRequest<SuccessModel, ErrorModel>(withRequestParams requestParams: HTTPRequestParamsProtocol, completion: @escaping (Response<SuccessModel, ErrorModel>) -> Void) where SuccessModel : Decodable, ErrorModel : Decodable {
         provider.request(.moyaRequest(request: requestParams)) { (result) in
+            
+            
             switch result {
             case let .success(response):
+                if let printData = response.data.prettyPrintedJSONString {
+                    print(printData)
+                }
                 if (200...299).contains(response.statusCode) {
                     do {
                         let resultDecoded = try JSONDecoder().decode(SuccessModel.self, from: response.data)

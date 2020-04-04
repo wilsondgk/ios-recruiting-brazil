@@ -10,6 +10,7 @@ import Foundation
 
 protocol MoviesListPresenterProtocol {
     func presentLoadingState()
+    func presentError(_ error: Error?)
     func presentMovies(_ movies: [MovieResponseModel], withFavoriteMovies favoriteMovies: [Int64: Bool?])
 }
 
@@ -40,38 +41,49 @@ final class MoviesListInteractor: MoviesListInteractorProtocol {
     
     //MARK: MoviesListInteractorProtocol
     func viewDidLoad() {
-//        presenter.presentLoadingState()
-        worker.getFavoriteMoviesList(successCompletion: { [weak self] (movies) in
+        presenter.presentLoadingState()
+        self.worker.getFavoriteMoviesList(successCompletion: { [weak self] (movies) in
             movies.forEach { (movie) in
                 self?.favoriteMoviesDict[movie.id] = true
             }
             self?.getMovieList()
-        }) { (error) in
-            //TODO: Add error
+        }) { [weak self] (error) in
+            self?.presenter.presentError(error)
         }
     }
     
-    func reloadMovies() {
+    func reloadFavoriteMovies() {
+        presenter.presentLoadingState()
+        clearFavoriteMoviesDict()
         worker.getFavoriteMoviesList(successCompletion: { [weak self] (movies) in
             movies.forEach { (movie) in
                 self?.favoriteMoviesDict[movie.id] = true
             }
-        }) { (error) in
-            //TODO: Add error
+        }) { [weak self] (error) in
+            self?.presenter.presentError(error)
+            return
         }
         presenter.presentMovies(movieModelList, withFavoriteMovies: favoriteMoviesDict)
+    }
+    
+    private func clearFavoriteMoviesDict() {
+        favoriteMoviesDict = [:]
+    }
+    
+    func retrybuttonClicked() {
+        viewDidLoad()
     }
     
     private func getMovieList() {
         worker.getMoviesList(successCompletion: { [weak self] result in
             guard let strongSelf = self else {
-                //TODO error
+                self?.presenter.presentError(nil)
                 return
             }
             strongSelf.movieModelList = result.results
             strongSelf.presenter.presentMovies(result.results, withFavoriteMovies: strongSelf.favoriteMoviesDict)
-        }) { (error) in
-            //todo: add error handler
+        }) { [weak self] (error) in
+            self?.presenter.presentError(nil)
         }
     }
     

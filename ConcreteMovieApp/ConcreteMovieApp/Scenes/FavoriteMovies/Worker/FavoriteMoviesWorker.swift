@@ -34,13 +34,26 @@ extension LocalApiProtocol {
         let movieData = MovieData(context: getContext())
         movieData.id = movie.id
         movieData.name = movie.title
+        movieData.averageRating = movie.averageRating
+        movieData.releaseDate = movie.releaseDate
+        movieData.overview = movie.overview
+        movieData.posterPath = movie.posterPath
+        
         return movieData
     }
     
     func bindMovieData(toMovieModel movieData: MovieData) -> MovieResponseModel? {
-        guard let name = movieData.name else {
-            return nil
+        guard let name = movieData.name,
+            let releaseDate = movieData.releaseDate,
+            let overview = movieData.overview,
+            let posterPath = movieData.posterPath else {
+                return nil
         }
-        return MovieResponseModel(id: movieData.id, title: name)
+        return MovieResponseModel(id: movieData.id,
+                                  title: name,
+                                  averageRating: movieData.averageRating,
+                                  releaseDate: releaseDate,
+                                  overview: overview,
+                                  posterPath: posterPath)
     }
 }

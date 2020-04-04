@@ -28,6 +28,10 @@ final class FavoriteMoviesInteractor: FavoriteMoviesInteractorProtocol {
     }
     
     func viewDidLoad() {
+        reloadFavoriteMovies()
+    }
+    
+    func reloadFavoriteMovies() {
         worker.getFavoriteMovies(successCompletion: { [weak self](moviesList) in
             self?.presenter.presentFavoriteMovies(moviesList)
         }) { (errpr) in

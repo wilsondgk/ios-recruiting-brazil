@@ -11,4 +11,6 @@ import Foundation
 struct DefaultMovieViewModel {
     let name: String
     let isFavorite: Bool
+    let ratingText: String
+    let yearAndLengthText: String
 }

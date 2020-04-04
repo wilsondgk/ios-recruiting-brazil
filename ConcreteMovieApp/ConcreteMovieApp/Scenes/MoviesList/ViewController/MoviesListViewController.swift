@@ -11,7 +11,8 @@ import UIKit
 protocol MoviesListInteractorProtocol: class {
     func viewDidLoad()
     func didClickInMovie(atIndex indexPath: IndexPath)
-    func reloadMovies()
+    func reloadFavoriteMovies()
+    func retrybuttonClicked()
 }
 
 final class MoviesListViewController: BaseViewController, MoviesListViewProtocol {
@@ -40,14 +41,16 @@ final class MoviesListViewController: BaseViewController, MoviesListViewProtocol
     override func viewDidLoad() {
         super.viewDidLoad()
         title = String(key: "movies_title")
-        
+        setRetryErrorBlock { [weak self] in
+            self?.interactor.retrybuttonClicked()
+        }
         interactor.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        interactor.reloadMovies()
+        interactor.reloadFavoriteMovies()
     }
     
     override func loadView() {

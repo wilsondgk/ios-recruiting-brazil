@@ -99,12 +99,12 @@ class BaseViewController: UIViewController {
         return NSError(domain: bundle, code:7779, userInfo:[ NSLocalizedDescriptionKey: message])
     }
     
-    func showLoading(withMessage message:String) {
+    func showLoading(withMessage message: String) {
         showLoadingInView(nil, withMessage: message)
     }
     
     func showLoadingInView(_ aView:UIView? = nil, withMessage message:String? = nil) {
-        let containerView:UIView = aView == nil ? self.view : aView!
+        let containerView: UIView = aView == nil ? self.view : aView!
         hideErrorView()
         loadingView.setLoadingMessage(message)
         containerView.addSubview(loadingView)

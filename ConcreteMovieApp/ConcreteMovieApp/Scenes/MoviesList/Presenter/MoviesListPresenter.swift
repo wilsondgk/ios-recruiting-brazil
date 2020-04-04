@@ -10,6 +10,8 @@ import Foundation
 
 protocol MoviesListViewProtocol: class {
     func showLoading(withMessage message:String)
+    func showError(_ error: Error?)
+    func setNormalLayout()
     func updateMovies(withMoviesViewModel viewModels: [DefaultMovieViewModel])
 }
 
@@ -28,8 +30,18 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
     func presentMovies(_ movies: [MovieResponseModel], withFavoriteMovies favoriteMovies: [Int64 : Bool?]) {
         let viewModels = movies.map { (model) -> DefaultMovieViewModel in
             let isFavorite = favoriteMovies[model.id] == nil ? false : true
-            return DefaultMovieViewModel(name: model.title, isFavorite:  isFavorite)
+            let date = Date.dateFrom(string: model.releaseDate, withFormat: "yyyy-MM-dd")
+            let year = date == nil ? "N/A" : String(date!.getYearValue())
+            return DefaultMovieViewModel(name: model.title,
+                                         isFavorite: isFavorite,
+                                         ratingText: String(model.averageRating.getStringWithDecimal(1)),
+                                         yearAndLengthText: "Lançamento \(year)")
         }
+        view?.setNormalLayout()
         view?.updateMovies(withMoviesViewModel: viewModels)
+    }
+    
+    func presentError(_ error: Error?) {
+        view?.showError(error)
     }
 }

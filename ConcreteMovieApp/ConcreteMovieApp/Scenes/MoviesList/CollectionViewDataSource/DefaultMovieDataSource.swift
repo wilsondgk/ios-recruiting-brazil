@@ -14,7 +14,7 @@ class DefaultMovieDataSource: CollectionArrayDataSource<DefaultMovieViewModel, M
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = (UIScreen.main.bounds.width - (3 * collectionInsets)) / 2
-        let cellHeight = cellWidth * 1.5
+        let cellHeight = cellWidth * 1.5 + 111
         return CGSize(width: cellWidth, height: cellHeight);
     }
     
