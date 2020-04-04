@@ -15,6 +15,7 @@ class MovieCollectionViewCell: UICollectionViewCell, ConfigurableCell {
     @IBOutlet private weak var movieImageView: UIImageView!
     @IBOutlet private weak var ratingLabel: UILabel!
     @IBOutlet private weak var yearAndLengthLabel: UILabel!
+    @IBOutlet private weak var isFavoriteImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,5 +27,7 @@ class MovieCollectionViewCell: UICollectionViewCell, ConfigurableCell {
         titleLabel.text = item.name
         ratingLabel.text = item.ratingText
         yearAndLengthLabel.text = item.yearAndLengthText
+        movieImageView.loadImageFrom(path: item.posterPath)
+        isFavoriteImageView.image = UIImage(named: item.favoriteIconImage)
     }
 }

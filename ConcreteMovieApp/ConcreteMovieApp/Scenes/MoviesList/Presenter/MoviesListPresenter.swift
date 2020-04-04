@@ -33,9 +33,10 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
             let date = Date.dateFrom(string: model.releaseDate, withFormat: "yyyy-MM-dd")
             let year = date == nil ? "N/A" : String(date!.getYearValue())
             return DefaultMovieViewModel(name: model.title,
-                                         isFavorite: isFavorite,
                                          ratingText: String(model.averageRating.getStringWithDecimal(1)),
-                                         yearAndLengthText: "Lançamento \(year)")
+                                         yearAndLengthText: "Lançamento \(year)",
+                                         posterPath: model.posterPath,
+                                         favoriteIconImage: isFavorite ? "favorite_movie_icon" : "not_favorite_movie_icon")
         }
         view?.setNormalLayout()
         view?.updateMovies(withMoviesViewModel: viewModels)
