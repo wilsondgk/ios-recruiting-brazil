@@ -41,15 +41,23 @@ final class MovieDetailInteractor: MovieDetailInteractorProtocol {
     
     func favoriteButtonClicked() {
         if isFavorite {
-            worker.unfavoriteMovie(movieModel, sucessCompletion: { [weak self] in
-                if let strongSelf = self {
-                    strongSelf.presenter.presentMovieDetails(strongSelf.movieModel, isFavorite: !strongSelf.isFavorite)
-                }
-            }) { (error) in
-                //todo show error
-            }
+            favoriteMovie()
             return
         }
+        unFavoriteMovie()
+    }
+    
+    private func favoriteMovie() {
+        worker.unfavoriteMovie(movieModel, sucessCompletion: { [weak self] in
+            if let strongSelf = self {
+                strongSelf.presenter.presentMovieDetails(strongSelf.movieModel, isFavorite: !strongSelf.isFavorite)
+            }
+        }) { (error) in
+            //todo show error
+        }
+    }
+    
+    private func unFavoriteMovie() {
         worker.saveFavoriteMovie(movieModel, sucessCompletion: { [weak self] in
             if let strongSelf = self {
                 strongSelf.presenter.presentMovieDetails(strongSelf.movieModel, isFavorite: !strongSelf.isFavorite)

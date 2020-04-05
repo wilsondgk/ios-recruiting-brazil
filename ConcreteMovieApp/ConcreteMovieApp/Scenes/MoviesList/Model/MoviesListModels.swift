@@ -30,17 +30,20 @@ struct MovieResponseModel: Codable {
     var releaseDate: String
     var overview: String
     var posterPath: String
+    var backdropPath: String?
+    
+    func getYearText() -> String {
+        let date = Date.dateFrom(string: releaseDate, withFormat: "yyyy-MM-dd")
+        let year = date == nil ? "N/A" : String(date!.getYearValue())
+        return year
+    }
 //    var averageRating: Double
 //    var genresIds: [Int]
 //    var originalTitle: String
-//    var backdropPath: String?
 //    var isAdult: Bool
 //    var popularity: Double
-    
-    
 //    var originalLanguage: String
 //    var voteCount: Int64
-    
 //    var isVideo: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -50,16 +53,13 @@ struct MovieResponseModel: Codable {
         case releaseDate = "release_date"
         case overview = "overview"
         case posterPath = "poster_path"
+        case backdropPath = "backdrop_path"
 //        case genresIds = "genre_ids"
 //        case originalTitle = "original_title"
-//        case backdropPath = "backdrop_path"
 //        case isAdult = "adult"
 //        case popularity = "popularity"
-        
-        
 //        case originalLanguage = "original_language"
 //        case voteCount = "vote_count"
-        
 //        case isVideo = "video"
     }
 }

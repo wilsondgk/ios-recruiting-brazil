@@ -9,7 +9,7 @@
 import Foundation
 
 protocol MovieDetailViewProtocol: AnyObject {
-    func updateMovieDetails(_ movie: MovieResponseModel, isFavorite: Bool)
+    func updateMovieDetails(_ movie: MovieDetailViewModel, isFavorite: Bool)
 }
 
 final class MovieDetailPresenter: MovieDetailPresenterProtocol {
@@ -20,6 +20,14 @@ final class MovieDetailPresenter: MovieDetailPresenterProtocol {
     }
     
     func presentMovieDetails(_ movie: MovieResponseModel, isFavorite: Bool) {
-        self.view?.updateMovieDetails(movie, isFavorite: isFavorite)
+        
+        let viewModel = MovieDetailViewModel(title: movie.title,
+                                             posterPath: movie.posterPath,
+                                             backdropPath: movie.backdropPath,
+                                             isFavorite: movie.isFavorite ?? false,
+                                             movieOverview: movie.overview,
+                                             year: movie.getYearText())
+        
+        self.view?.updateMovieDetails(viewModel, isFavorite: isFavorite)
     }
 }

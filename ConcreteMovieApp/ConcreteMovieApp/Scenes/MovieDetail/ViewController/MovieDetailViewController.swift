@@ -16,8 +16,12 @@ protocol MovieDetailInteractorProtocol {
 class MovieDetailViewController: UIViewController, MovieDetailViewProtocol {
 
     private let interactor: MovieDetailInteractorProtocol
-    @IBOutlet private weak var favoriteButton: UIButton!
-    @IBOutlet private weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var backImageView: UIImageView!
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var overviewLabel: UILabel!
     
     init(withInteractor interactor: MovieDetailInteractorProtocol) {
         self.interactor = interactor
@@ -33,6 +37,13 @@ class MovieDetailViewController: UIViewController, MovieDetailViewProtocol {
         
         title = "Detalhe do Filme"
         interactor.viewDidLoad()
+        
+        setupLayout()
+    }
+    
+    private func setupLayout() {
+        favoriteButton.setBackgroundImage(UIImage(named: "favorite_movie_icon"), for: .selected)
+        favoriteButton.setBackgroundImage(UIImage(named: "not_favorite_movie_icon"), for: .normal)
     }
     
     @IBAction func favoriteMovieButtonClicked(_ sender: Any) {
@@ -40,8 +51,12 @@ class MovieDetailViewController: UIViewController, MovieDetailViewProtocol {
     }
     
     //MARK: MovieDetailViewProtocol
-    func updateMovieDetails(_ movie: MovieResponseModel, isFavorite: Bool) {
+    func updateMovieDetails(_ movie: MovieDetailViewModel, isFavorite: Bool) {
         movieTitleLabel.text = movie.title
+        backImageView.loadImageFrom(path: movie.backdropPath ?? "")
+        yearLabel.text = movie.year
+        posterImageView.loadImageFrom(path: movie.posterPath)
+        overviewLabel.text = movie.movieOverview
         favoriteButton.isSelected = isFavorite
     }
 }
