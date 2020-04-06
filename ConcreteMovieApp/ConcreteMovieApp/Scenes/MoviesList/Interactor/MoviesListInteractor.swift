@@ -56,14 +56,17 @@ final class MoviesListInteractor: MoviesListInteractorProtocol {
         presenter.presentLoadingState()
         clearFavoriteMoviesDict()
         worker.getFavoriteMoviesList(successCompletion: { [weak self] (movies) in
-            movies.forEach { (movie) in
-                self?.favoriteMoviesDict[movie.id] = true
+            guard let strongSelf = self else {
+                return
             }
+            movies.forEach { (movie) in
+                strongSelf.favoriteMoviesDict[movie.id] = true
+            }
+            strongSelf.presenter.presentMovies(strongSelf.movieModelList, withFavoriteMovies: strongSelf.favoriteMoviesDict)
         }) { [weak self] (error) in
             self?.presenter.presentError(error)
             return
         }
-        presenter.presentMovies(movieModelList, withFavoriteMovies: favoriteMoviesDict)
     }
     
     private func clearFavoriteMoviesDict() {
