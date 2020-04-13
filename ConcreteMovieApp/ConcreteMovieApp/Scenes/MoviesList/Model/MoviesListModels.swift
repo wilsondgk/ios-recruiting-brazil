@@ -14,6 +14,7 @@ struct GeneralMovieResponseModel: Codable {
     var totalResults: Int
     var currentPage: Int
     var results: [MovieResponseModel]
+    
     enum CodingKeys: String, CodingKey {
         case totalPages = "total_pages"
         case totalResults = "total_results"

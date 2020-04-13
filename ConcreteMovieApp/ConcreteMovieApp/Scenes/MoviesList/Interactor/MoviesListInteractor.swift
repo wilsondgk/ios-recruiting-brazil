@@ -16,7 +16,7 @@ protocol MoviesListPresenterProtocol {
 
 protocol MoviesListWorkerProtocol {
     func getFavoriteMoviesList(successCompletion: @escaping (_ movies: [MovieResponseModel]) -> Void, failCompletion: @escaping (_ error: Error) -> Void)
-    func getMoviesList(successCompletion: @escaping (_ movies: GeneralMovieResponseModel) -> Void, failCompletion: @escaping (_ error: Error) -> Void)
+    func getMoviesList(fromPage page: Int, successCompletion: @escaping (_ movies: GeneralMovieResponseModel) -> Void, failCompletion: @escaping (_ error: Error) -> Void)
 }
 
 protocol MoviesListNavigationProtocol: class {
@@ -30,6 +30,9 @@ final class MoviesListInteractor: MoviesListInteractorProtocol {
     private let worker: MoviesListWorkerProtocol
     private var movieModelList: [MovieResponseModel] = []
     private var favoriteMoviesDict: [Int64: Bool?] = [:]
+    private var isLoadingMovies: Bool = false
+    private var didReachLastPage: Bool = false
+    private var currentPage: Int = 1
     
     init(withCoordinator coordinator: MoviesListNavigationProtocol,
          withPresenter presenter: MoviesListPresenterProtocol,
@@ -77,16 +80,22 @@ final class MoviesListInteractor: MoviesListInteractorProtocol {
         viewDidLoad()
     }
     
-    private func getMovieList() {
-        worker.getMoviesList(successCompletion: { [weak self] result in
+    func getMovieList() {
+        if isLoadingMovies || didReachLastPage { return }
+        isLoadingMovies = true
+        worker.getMoviesList(fromPage: currentPage, successCompletion: { [weak self] result in
             guard let strongSelf = self else {
                 self?.presenter.presentError(nil)
                 return
             }
-            strongSelf.movieModelList = result.results
-            strongSelf.presenter.presentMovies(result.results, withFavoriteMovies: strongSelf.favoriteMoviesDict)
+            strongSelf.movieModelList += result.results
+            strongSelf.presenter.presentMovies(strongSelf.movieModelList, withFavoriteMovies: strongSelf.favoriteMoviesDict)
+            strongSelf.didReachLastPage = result.currentPage == result.totalPages
+            strongSelf.currentPage += 1
+            strongSelf.isLoadingMovies = false
         }) { [weak self] (error) in
-            self?.presenter.presentError(nil)
+            self?.presenter.presentError(error)
+            self?.isLoadingMovies = false
         }
     }
     

@@ -29,8 +29,9 @@ final class MoviesListWorker: MoviesListWorkerProtocol {
         }
     }
     
-    func getMoviesList(successCompletion: @escaping (_ movies: GeneralMovieResponseModel) -> Void, failCompletion: @escaping (_ error: Error) -> Void) {
-        let params = ["api_key" : "de94a58f8f1c55104fa3b01661f5c0d5"]
+    func getMoviesList(fromPage page: Int, successCompletion: @escaping (_ movies: GeneralMovieResponseModel) -> Void, failCompletion: @escaping (_ error: Error) -> Void) {
+        let params = ["api_key" : "de94a58f8f1c55104fa3b01661f5c0d5",
+                      "page" : String(page)]
         let request = RequestBuilder(withUrl: "https://api.themoviedb.org/3", andMethod: .get)
             .withPath("/movie/popular")
             .withQuery(params)

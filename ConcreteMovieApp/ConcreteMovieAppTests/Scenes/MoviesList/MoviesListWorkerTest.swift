@@ -27,7 +27,7 @@ class MoviesListWorkerTests: XCTestCase {
         externalProviderMock = ExternalApiProviderMock(shouldSuccessRequest: shouldSuccess, withData: data)
         localProviderMock = LocalApiProviderMock(shouldSuccessRequest: shouldSuccess)
         worker = MoviesListWorker(withExternalProvider: externalProviderMock, andLocalProvider: localProviderMock)
-        worker.getMoviesList(successCompletion: { (model) in
+        worker.getMoviesList(fromPage: 1, successCompletion: { (model) in
             XCTAssertTrue(shouldSuccess)
         }) { (error) in
             XCTFail()
@@ -39,7 +39,7 @@ class MoviesListWorkerTests: XCTestCase {
         externalProviderMock = ExternalApiProviderMock(shouldSuccessRequest: shouldSuccess, withData: data)
         localProviderMock = LocalApiProviderMock(shouldSuccessRequest: shouldSuccess)
         worker = MoviesListWorker(withExternalProvider: externalProviderMock, andLocalProvider: localProviderMock)
-        worker.getMoviesList(successCompletion: { (model) in
+        worker.getMoviesList(fromPage: 1, successCompletion: { (model) in
             XCTFail()
         }) { (error) in
             XCTAssertFalse(shouldSuccess)

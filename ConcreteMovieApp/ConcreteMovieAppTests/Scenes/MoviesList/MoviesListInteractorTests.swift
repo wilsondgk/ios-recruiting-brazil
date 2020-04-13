@@ -116,6 +116,7 @@ class MoviesListPresenterSpy: MoviesListPresenterProtocol {
 }
 
 class MoviesListWorkerSpy: MoviesListWorkerProtocol {
+    
     let moviesListexpectation: XCTestExpectation
     let favoriteMoviesExpectation: XCTestExpectation
     var success: Bool = false
@@ -142,7 +143,7 @@ class MoviesListWorkerSpy: MoviesListWorkerProtocol {
         favoriteMoviesExpectation.fulfill()
     }
     
-    func getMoviesList(successCompletion: @escaping (GeneralMovieResponseModel) -> Void, failCompletion: @escaping (Error) -> Void) {
+    func getMoviesList(fromPage page: Int, successCompletion: @escaping (GeneralMovieResponseModel) -> Void, failCompletion: @escaping (Error) -> Void) {
         let movie = MovieResponseModel(id: 0, title: "", averageRating: 1.0, releaseDate: "", overview: "", posterPath: "")
         let response = GeneralMovieResponseModel(totalPages: 0, totalResults: 0, currentPage: 0, results: [movie])
         if success {

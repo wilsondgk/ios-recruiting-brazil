@@ -13,6 +13,7 @@ protocol MoviesListInteractorProtocol: class {
     func didClickInMovie(atIndex indexPath: IndexPath)
     func reloadFavoriteMovies()
     func retrybuttonClicked()
+    func getMovieList()
 }
 
 final class MoviesListViewController: BaseViewController, MoviesListViewProtocol {
@@ -25,8 +26,8 @@ final class MoviesListViewController: BaseViewController, MoviesListViewProtocol
         
         return collectionView
     }()
-    private var moviesDataSource: DefaultMovieDataSource?
     
+    private var moviesDataSource: DefaultMovieDataSource?
     private let interactor: MoviesListInteractorProtocol
     
     init(withInteractor interactor: MoviesListInteractorProtocol) {
@@ -45,6 +46,7 @@ final class MoviesListViewController: BaseViewController, MoviesListViewProtocol
             self?.interactor.retrybuttonClicked()
         }
         interactor.viewDidLoad()
+        setDatasourceDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,12 +67,29 @@ final class MoviesListViewController: BaseViewController, MoviesListViewProtocol
     
     //MARK: MoviesListViewProtocol
     
+    private func setDatasourceDelegate() {
+        let emptyList: [DefaultMovieViewModel] = []
+        moviesDataSource = DefaultMovieDataSource(collectionView: collectionView, array: emptyList)
+    }
+    
     func updateMovies(withMoviesViewModel viewModels: [DefaultMovieViewModel]) {
         moviesDataSource = DefaultMovieDataSource(collectionView: collectionView, array: viewModels)
+        moviesDataSource?.setScrollViewDelegate(self)
         moviesDataSource?.collectionItemSelectionHandler = { [weak self] indexPath in
             guard let strongSelf = self else { return }
             strongSelf.interactor.didClickInMovie(atIndex: indexPath)
         }
         collectionView.reloadData()
+    }
+}
+
+extension MoviesListViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let scrollContentSizeHeight = scrollView.contentSize.height
+        let scrollOffset = scrollView.contentOffset.y
+        let didReachEnd = scrollOffset >= scrollContentSizeHeight - UIScreen.main.bounds.height
+        if didReachEnd {
+            interactor.getMovieList()
+        }
     }
 }

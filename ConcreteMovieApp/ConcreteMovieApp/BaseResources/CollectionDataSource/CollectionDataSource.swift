@@ -17,6 +17,7 @@ where Cell: ConfigurableCell, Provider.T == Cell.T {
     
     let provider: Provider
     private let collectionView: UICollectionView
+    private var dataSourceScrollViewDelegate: UIScrollViewDelegate?
     
     init(collectionView: UICollectionView, provider: Provider) {
         self.collectionView = collectionView
@@ -35,7 +36,6 @@ where Cell: ConfigurableCell, Provider.T == Cell.T {
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("========  \(provider.numberOfItems(in: section))")
         return provider.numberOfItems(in: section)
     }
     
@@ -57,10 +57,6 @@ where Cell: ConfigurableCell, Provider.T == Cell.T {
     
     public var collectionItemSelectionHandler: CollectionItemSelectionHandlerType?
     
-    /*
-     * Note: No action required
-     */
-    
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionItemSelectionHandler?(indexPath)
     }
@@ -69,5 +65,15 @@ where Cell: ConfigurableCell, Provider.T == Cell.T {
                              viewForSupplementaryElementOfKind kind: String,
                              at indexPath: IndexPath) -> UICollectionReusableView {
         return UICollectionReusableView(frame: CGRect.zero)
+    }
+    
+    //MARK: ScrollViewDelegate
+    
+    func setScrollViewDelegate(_ delegate: UIScrollViewDelegate) {
+        dataSourceScrollViewDelegate = delegate
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        dataSourceScrollViewDelegate?.scrollViewDidScroll?(collectionView)
     }
 }
